@@ -4,1924 +4,683 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Betupaint | Premium Painting Service</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        display: ['Playfair Display', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: { blue: '#1e40af', orange: '#f97316', gold: '#d4a853', dark: '#0f172a' }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        * { scroll-behavior: smooth; }
-
-        .hero-bg {
-            background: linear-gradient(135deg, rgba(15,23,42,0.85), rgba(30,64,175,0.7)), url('banner.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); }
-        .glass-dark { background: rgba(0,0,0,0.3); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
-
-        .gradient-text { background: linear-gradient(135deg, #f97316, #d4a853); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .gradient-border { border-image: linear-gradient(135deg, #f97316, #d4a853) 1; }
-
-        .card-shine { position: relative; overflow: hidden; }
-        .card-shine::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,0.05) 50%,transparent 70%); transform:rotate(45deg); transition:0.6s; }
-        .card-shine:hover::before { left:100%; }
-
-        .float-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
-
-        .fade-up { opacity:0; transform:translateY(40px); transition:all 0.8s cubic-bezier(0.16,1,0.3,1); }
-        .fade-up.visible { opacity:1; transform:translateY(0); }
-
-        .brand-card { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
-        .brand-card:hover { transform: translateY(-12px) scale(1.02); }
-
-        .product-card-premium { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
-        .product-card-premium:hover { transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0,0,0,0.15); }
-
-        .btn-premium {
-            background: linear-gradient(135deg, #f97316, #ea580c);
-            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
-            position: relative; overflow: hidden;
-        }
-        .btn-premium::after { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent); transition:0.5s; }
-        .btn-premium:hover::after { left:100%; }
-        .btn-premium:hover { transform:translateY(-3px); box-shadow:0 12px 35px rgba(249,115,22,0.4); }
-
-        .btn-outline-premium {
-            border: 2px solid #f97316; color: #f97316;
-            transition: all 0.3s; position: relative; overflow: hidden; z-index: 1;
-        }
-        .btn-outline-premium::before { content:''; position:absolute; top:0; left:0; width:0; height:100%; background:linear-gradient(135deg,#f97316,#ea580c); z-index:-1; transition:0.4s; }
-        .btn-outline-premium:hover::before { width:100%; }
-        .btn-outline-premium:hover { color:#fff; transform:translateY(-3px); }
-
-        .section-divider { height:1px; background:linear-gradient(90deg,transparent,#d4a853,transparent); }
-
-        .marquee { animation: marquee 30s linear infinite; }
-        @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-
-        .counter { font-variant-numeric: tabular-nums; }
-
-        /* Mobile menu */
-        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
-        .mobile-menu.open { transform: translateX(0); }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-white font-sans text-gray-800 overflow-x-hidden">
+<body>
 
-    <!-- ========== PREMIUM NAVBAR ========== -->
-    <nav class="fixed w-full top-0 z-50 transition-all duration-500" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center">
-                    <i class="fas fa-paint-roller text-white text-lg"></i>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-2xl font-black tracking-tight text-white">BETU<span class="text-orange-400">PAINT</span></span>
-                    <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-gray-400">Premium Painting</span>
+<!-- ===== HEADER / NAVBAR ===== -->
+<header>
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fas fa-paint-roller"></i></div>
+                <div class="logo-text">
+                    <span>BETU<b>PAINT</b></span>
+                    <small>Premium Painting</small>
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center space-x-8">
-                <a href="#home" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Home</a>
-                <a href="#brands" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Brands</a>
-                <a href="#putty" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Putty</a>
-                <a href="#primer" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Primer</a>
-                <a href="#products" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Products</a>
-                <a href="#services" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Services</a>
-                <a href="about.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">About</a>
-                <a href="contact.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Contact</a>
-            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#partner">Our Partner</a></li>
+                <li><a href="#brands">Our Brands</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#team">Our Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
-            <div class="hidden lg:flex items-center space-x-4">
-                <a href="#quote" class="btn-premium text-white px-7 py-3 rounded-full font-bold text-sm shadow-lg">
-                    <i class="fas fa-calendar-check mr-2"></i>Book Free Consultation
-                </a>
-            </div>
-
-            <button onclick="document.getElementById('mobileMenu').classList.toggle('open')" class="lg:hidden text-white text-2xl">
+            <a href="#contact" class="nav-cta">Book Free Consultation</a>
+            <button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')">
                 <i class="fas fa-bars"></i>
             </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-brand-dark/98 backdrop-blur-xl flex flex-col items-center justify-center space-y-6">
-        <button onclick="this.parentElement.classList.remove('open')" class="absolute top-6 right-6 text-white text-3xl"><i class="fas fa-times"></i></button>
-        <a href="#home" onclick="this.parentElement.classList.remove('open')" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Home</a>
-        <a href="#brands" onclick="this.parentElement.classList.remove('open')" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Brands</a>
-        <a href="#putty" onclick="this.parentElement.classList.remove('open')" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Putty</a>
-        <a href="#primer" onclick="this.parentElement.classList.remove('open')" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Primer</a>
-        <a href="#products" onclick="this.parentElement.classList.remove('open')" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Products</a>
-        <a href="#services" onclick="this.parentElement.classList.remove('open')" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Services</a>
-        <a href="about.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">About</a>
-        <a href="contact.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Contact</a>
-        <a href="#quote" onclick="this.parentElement.classList.remove('open')" class="btn-premium text-white px-8 py-3 rounded-full font-bold mt-4">Book Free Consultation</a>
+        </nav>
     </div>
+    <div id="mobileNav" class="mobile-nav">
+        <ul>
+            <li><a href="#home" onclick="closeMobileNav()">Home</a></li>
+            <li><a href="#about" onclick="closeMobileNav()">About</a></li>
+            <li><a href="#partner" onclick="closeMobileNav()">Our Partner</a></li>
+            <li><a href="#brands" onclick="closeMobileNav()">Our Brands</a></li>
+            <li><a href="#gallery" onclick="closeMobileNav()">Gallery</a></li>
+            <li><a href="#team" onclick="closeMobileNav()">Our Team</a></li>
+            <li><a href="#contact" onclick="closeMobileNav()">Contact</a></li>
+        </ul>
+    </div>
+</header>
 
-    <!-- ========== HERO SECTION ========== -->
-    <section id="home" class="hero-bg min-h-screen flex items-center relative">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/5"></div>
-
-        <!-- Decorative elements -->
-        <div class="absolute top-20 right-10 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl float-animation"></div>
-        <div class="absolute bottom-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl float-animation" style="animation-delay:-3s"></div>
-
-        <div class="max-w-7xl mx-auto px-6 pt-24 pb-16 grid lg:grid-cols-2 gap-16 items-center relative z-10">
-            <div class="fade-up">
-                <div class="inline-flex items-center space-x-2 glass rounded-full px-5 py-2 mb-8">
-                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                    <span class="text-white/80 text-sm font-medium">Trusted by 10,000+ Homeowners</span>
+<!-- ===== HERO ===== -->
+<section id="home" class="hero">
+    <div class="container">
+            <div class="hero-inner">
+            <div>
+                <div class="hero-badge">
+                    <span></span>
+                    Trusted by 10,000+ Homeowners
                 </div>
-
-                <h1 class="font-display text-5xl md:text-7xl font-black text-white leading-[1.1] mb-6">
-                    Transform Your <br>
-                    <span class="gradient-text">Living Space</span><br>
-                    With Elegance
-                </h1>
-
-                <p class="text-xl text-gray-300 max-w-lg mb-10 leading-relaxed">
-                    India's premium painting service. We bring expert craftsmanship, authorized brand products, and a flawless finish to every wall.
-                </p>
-
-                <div class="flex flex-wrap gap-4 mb-12">
-                    <a href="#quote" class="btn-premium text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl flex items-center">
-                        <span>Get Free Quote</span>
-                        <i class="fas fa-arrow-right ml-3"></i>
+                <h1>Paint Your World<br>With <em>Betupaint</em></h1>
+                <p>India's premium painting service. We bring expert craftsmanship, authorized brand products, and a flawless finish to every wall — interior, exterior, and beyond.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i> Get Free Quote
                     </a>
-                    <a href="#services" class="btn-outline-premium px-8 py-4 rounded-full font-bold text-lg flex items-center">
-                        <i class="fas fa-play mr-3"></i>
-                        <span>Our Services</span>
+                    <a href="#gallery" class="btn-secondary">
+                        <i class="fas fa-images"></i> View Our Work
                     </a>
                 </div>
-
-                <!-- Trust Badges -->
-                <div class="flex flex-wrap gap-8">
-                    <div class="text-center">
-                        <div class="text-3xl font-black text-white counter">10K+</div>
-                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Happy Clients</div>
-                    </div>
-                    <div class="w-px bg-white/20"></div>
-                    <div class="text-center">
-                        <div class="text-3xl font-black text-white counter">15+</div>
-                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Years Experience</div>
-                    </div>
-                    <div class="w-px bg-white/20"></div>
-                    <div class="text-center">
-                        <div class="text-3xl font-black text-white counter">50+</div>
-                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Cities Covered</div>
-                    </div>
+                <div class="hero-stats">
+                    <div class="stat"><strong>10K+</strong><span>Happy Clients</span></div>
+                    <div class="divider"></div>
+                    <div class="stat"><strong>15+</strong><span>Years Experience</span></div>
+                    <div class="divider"></div>
+                    <div class="stat"><strong>50+</strong><span>Cities Covered</span></div>
                 </div>
             </div>
-
-            <!-- Hero Form -->
-            <div class="fade-up" style="transition-delay:0.2s">
-                <div class="glass rounded-3xl p-8 md:p-10 border border-white/10" id="quote">
-                    <div class="text-center mb-8">
-                        <span class="inline-block bg-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Free Estimate</span>
-                        <h3 class="text-2xl font-display font-bold text-white">Get Your Free Quotation</h3>
-                        <p class="text-gray-400 text-sm mt-2">We'll get back to you within 2 hours</p>
-                    </div>
-                    <form id="contactForm" class="space-y-4">
-                        <div class="relative">
-                            <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="text" id="name" placeholder="Your Full Name" class="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition" required>
-                        </div>
-                        <div class="relative">
-                            <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="email" id="email" placeholder="Email Address" class="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition" required>
-                        </div>
-                        <div class="relative">
-                            <i class="fas fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="tel" id="mobile" placeholder="Mobile Number" class="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition" required>
-                        </div>
-                        <div class="relative">
-                            <i class="fas fa-paint-roller absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <select id="paintBrand" class="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-gray-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition appearance-none">
-                                <option value="None Selected">Choose Paint Brand</option>
-                                <option value="Asian Paints">Asian Paints</option>
-                                <option value="Berger Paints">Berger Paints</option>
-                                <option value="Nerolac">Nerolac</option>
-                                <option value="Opus">Opus</option>
-                                <option value="Dulux">Dulux</option>
-                                <option value="Indigo Paints">Indigo Paints</option>
-                            </select>
-                        </div>
-                        <div class="relative">
-                            <i class="fas fa-comment-dots absolute left-4 top-4 text-gray-500"></i>
-                            <textarea id="query" rows="3" placeholder="Describe your query or requirement..." class="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition resize-none"></textarea>
-                        </div>
-                        <button type="button" onclick="betuWhatsApp()" class="w-full btn-premium text-white font-bold py-4 rounded-2xl shadow-xl flex items-center justify-center space-x-3 text-lg mt-2">
-                            <i class="fab fa-whatsapp text-2xl"></i>
-                            <span>Send to WhatsApp</span>
-                        </button>
-                    </form>
-                    <p class="text-center text-gray-500 text-xs mt-4"><i class="fas fa-lock mr-1"></i>Your information is 100% secure</p>
-                </div>
+            <div class="hero-img">
+                <img src="images/img.png" alt="Betupaint Paint Shop">
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 animate-bounce">
-            <i class="fas fa-chevron-down text-2xl"></i>
-        </div>
-    </section>
+<!-- ===== BRAND MARQUEE ===== -->
+<div class="marquee-bar">
+    <div class="marquee-track">
+        <span class="brand-name">Asian Paints</span>
+        <span class="brand-name">Berger Paints</span>
+        <span class="brand-name">Nerolac</span>
+        <span class="brand-name">Dulux</span>
+        <span class="brand-name">Opus Paints</span>
+        <span class="brand-name">Indigo Paints</span>
+        <span class="brand-name">JSW Paints</span>
+        <span class="brand-name">Shalimar</span>
+        <span class="brand-name">Birla White</span>
+        <span class="brand-name">JK Lakshmi</span>
+        <span class="brand-name">Asian Paints</span>
+        <span class="brand-name">Berger Paints</span>
+        <span class="brand-name">Nerolac</span>
+        <span class="brand-name">Dulux</span>
+        <span class="brand-name">Opus Paints</span>
+        <span class="brand-name">Indigo Paints</span>
+        <span class="brand-name">JSW Paints</span>
+        <span class="brand-name">Shalimar</span>
+        <span class="brand-name">Birla White</span>
+        <span class="brand-name">JK Lakshmi</span>
+    </div>
+</div>
 
-    <!-- ========== BRAND PARTNERS MARQUEE ========== -->
-    <section class="py-8 bg-gray-50 border-y border-gray-100 overflow-hidden">
-        <div class="flex whitespace-nowrap marquee">
-            <div class="flex items-center space-x-16 px-8">
-                <span class="text-2xl font-bold text-red-500/40 hover:text-red-500 transition-colors cursor-pointer">Asian Paints</span>
-                <span class="text-2xl font-bold text-blue-600/40 hover:text-blue-600 transition-colors cursor-pointer">Berger</span>
-                <span class="text-2xl font-bold text-yellow-600/40 hover:text-yellow-600 transition-colors cursor-pointer">Nerolac</span>
-                <span class="text-2xl font-bold text-green-600/40 hover:text-green-600 transition-colors cursor-pointer">Opus</span>
-                <span class="text-2xl font-bold text-purple-600/40 hover:text-purple-600 transition-colors cursor-pointer">Dulux</span>
-                <span class="text-2xl font-bold text-indigo-600/40 hover:text-indigo-600 transition-colors cursor-pointer">Indigo Paints</span>
-                <span class="text-2xl font-bold text-teal-600/40 hover:text-teal-600 transition-colors cursor-pointer">JSW Paints</span>
-                <span class="text-2xl font-bold text-rose-600/40 hover:text-rose-600 transition-colors cursor-pointer">Shalimar</span>
-            </div>
-            <div class="flex items-center space-x-16 px-8">
-                <span class="text-2xl font-bold text-red-500/40">Asian Paints</span>
-                <span class="text-2xl font-bold text-blue-600/40">Berger</span>
-                <span class="text-2xl font-bold text-yellow-600/40">Nerolac</span>
-                <span class="text-2xl font-bold text-green-600/40">Opus</span>
-                <span class="text-2xl font-bold text-purple-600/40">Dulux</span>
-                <span class="text-2xl font-bold text-indigo-600/40">Indigo Paints</span>
-                <span class="text-2xl font-bold text-teal-600/40">JSW Paints</span>
-                <span class="text-2xl font-bold text-rose-600/40">Shalimar</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== BRAND PRODUCT SECTIONS ========== -->
-    <section id="brands" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 fade-up">
-                <span class="inline-block bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">Our Partner Brands</span>
-                <h2 class="font-display text-4xl md:text-5xl font-black text-gray-900 mb-4">Premium Paint Collections</h2>
-                <p class="text-gray-500 text-lg max-w-2xl mx-auto">Explore curated products from India's most trusted paint brands. Each product hand-selected for quality and durability.</p>
-            </div>
-
-            <!-- ===== ASIAN PAINTS CART ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-500/30">
-                        <i class="fas fa-palette text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Asian Paints</h3>
-                        <p class="text-gray-400 text-sm">India's #1 Paint Company</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-red-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 flex items-center justify-center overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80" alt="Royale Luxury" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">Bestseller</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Royale Luxury Emulsion</h4>
-                            <p class="text-gray-400 text-sm mb-3">Premium interior finish with Teflon surface protector</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;4,299<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&w=400&q=80" alt="Apcolite" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Apcolite Premium Gloss</h4>
-                            <p class="text-gray-400 text-sm mb-3">High gloss enamel for wood & metal surfaces</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;899<span class="text-sm text-gray-400 font-normal">/1L</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=400&q=80" alt="Ace" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">Value Pick</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Ace Exterior Emulsion</h4>
-                            <p class="text-gray-400 text-sm mb-3">Weather-resistant exterior paint with anti-algal formula</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?auto=format&fit=crop&w=400&q=80" alt="Tractor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Tractor Distemper</h4>
-                            <p class="text-gray-400 text-sm mb-3">Smooth matte finish for budget-friendly interiors</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;649<span class="text-sm text-gray-400 font-normal">/5kg</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+<!-- ===== ABOUT ===== -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-inner">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&w=700&q=80" alt="Betupaint About">
+                <div class="about-badge">
+                    <strong>2010</strong>
+                    Founded
                 </div>
             </div>
+            <div class="about-content">
+                <span class="section-label">About Us</span>
+                <h2 class="section-title">Painting Excellence<br>Since 2010</h2>
+                <p>Betupaint was founded in 2010 with one mission — to deliver flawless, long-lasting paint finishes to every home and business. Over 15 years, we've built a reputation for honesty, quality, and professionalism across 50+ cities in India. We are an authorized dealer for India's top paint brands, ensuring you always get genuine products at fair prices.</p>
 
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== BERGER PAINTS CART ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-800 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                        <i class="fas fa-brush text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Berger Paints</h3>
-                        <p class="text-gray-400 text-sm">Colour with Confidence</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-blue-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80" alt="Silk" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Premium</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Silk Luxury Emulsion</h4>
-                            <p class="text-gray-400 text-sm mb-3">Silky smooth finish with stain-guard technology</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;3,899<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&q=80" alt="WeatherCoat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">WeatherCoat All Guard</h4>
-                            <p class="text-gray-400 text-sm mb-3">10-year protection against weather damage</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;3,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&q=80" alt="Rangoli" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">Eco-Friendly</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Rangoli Total Care</h4>
-                            <p class="text-gray-400 text-sm mb-3">Anti-bacterial paint safe for kids' rooms</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,499<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=400&q=80" alt="BergerPrimer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Wall Primer Premium</h4>
-                            <p class="text-gray-400 text-sm mb-3">High-adhesion primer for perfect base coating</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== NEROLAC CART ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg shadow-yellow-500/30">
-                        <i class="fas fa-fill-drip text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Nerolac Paints</h3>
-                        <p class="text-gray-400 text-sm">Suraksha Ke Saath Rang Bhi</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-yellow-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80" alt="Impressions" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">Top Rated</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Impressions 24 Carat</h4>
-                            <p class="text-gray-400 text-sm mb-3">Ultra-premium luxury paint with gold-class finish</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;4,599<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=400&q=80" alt="Beauty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Beauty Smooth Finish</h4>
-                            <p class="text-gray-400 text-sm mb-3">Velvet-smooth interior with anti-fade technology</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,899<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?auto=format&fit=crop&w=400&q=80" alt="Excel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Excel Total Guard</h4>
-                            <p class="text-gray-400 text-sm mb-3">All-weather exterior with 7-year warranty</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,999<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" alt="Suraksha" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Suraksha Plus</h4>
-                            <p class="text-gray-400 text-sm mb-3">Anti-bacterial formula with zero VOC emission</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,599<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== OPUS PAINTS CART ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shadow-lg shadow-emerald-500/30">
-                        <i class="fas fa-gem text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Opus Paints</h3>
-                        <p class="text-gray-400 text-sm">The Art of Perfect Walls</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-emerald-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?auto=format&fit=crop&w=400&q=80" alt="Opus Diamond" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">Exclusive</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-1">Opus</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Diamond Shield Ultra</h4>
-                            <p class="text-gray-400 text-sm mb-3">Premium exterior with diamond-tough coating</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;3,499<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-emerald-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1615529328331-f8917597711f?auto=format&fit=crop&w=400&q=80" alt="Opus Velvet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-1">Opus</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Velvet Touch Interior</h4>
-                            <p class="text-gray-400 text-sm mb-3">Silky matte finish with superior coverage</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,799<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-emerald-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80" alt="Opus Eco" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-lime-500 text-white text-xs font-bold px-3 py-1 rounded-full">Green Choice</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-1">Opus</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Eco Fresh Non-Toxic</h4>
-                            <p class="text-gray-400 text-sm mb-3">100% lead-free, safe for children & pets</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-emerald-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80" alt="Opus Prime" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-1">Opus</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Prime Coat Sealer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Professional grade primer with deep penetration</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;999<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-emerald-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== DULUX CART ===== -->
-            <div class="mb-8 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-700 flex items-center justify-center shadow-lg shadow-purple-500/30">
-                        <i class="fas fa-swatchbook text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Dulux Paints</h3>
-                        <p class="text-gray-400 text-sm">Let's Colour</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-purple-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-purple-50 to-violet-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=400&q=80" alt="Dulux Velvet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">Imported</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Dulux</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Velvet Touch Platinum</h4>
-                            <p class="text-gray-400 text-sm mb-3">International quality with rich, deep colours</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;5,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-purple-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-purple-50 to-violet-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=400&q=80" alt="Dulux WeatherShield" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Dulux</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">WeatherShield Max</h4>
-                            <p class="text-gray-400 text-sm mb-3">Ultimate exterior protection with UV guard</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;3,799<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-purple-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-purple-50 to-violet-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Dulux Promise" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Dulux</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Promise Interior</h4>
-                            <p class="text-gray-400 text-sm mb-3">Budget-friendly with washable formula</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,499<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-purple-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-purple-50 to-violet-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600607687644-c7f34b5063c7?auto=format&fit=crop&w=400&q=80" alt="Dulux SuperCover" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Dulux</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">SuperCover Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">One-coat coverage with strong adhesion</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,099<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-purple-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PUTTY PRODUCTS SECTION ========== -->
-    <section id="putty" class="py-24 bg-gradient-to-b from-gray-50 to-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 fade-up">
-                <span class="inline-block bg-amber-50 text-amber-600 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">Wall Preparation Essentials</span>
-                <h2 class="font-display text-4xl md:text-5xl font-black text-gray-900 mb-4">Premium Wall Putty</h2>
-                <p class="text-gray-500 text-lg max-w-2xl mx-auto">The foundation of a perfect paint job. Choose from India's most trusted putty brands for a flawless, smooth base.</p>
-            </div>
-
-            <!-- ===== BIRLA WHITE PUTTY ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center shadow-lg shadow-sky-500/30">
-                        <i class="fas fa-layer-group text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Birla White</h3>
-                        <p class="text-gray-400 text-sm">India's No.1 White Cement & Putty</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-sky-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-sky-50 to-blue-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1604357209793-fca5dca89f97?auto=format&fit=crop&w=400&q=80" alt="WallCare Putty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-full">Bestseller</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-sky-600 font-bold uppercase tracking-wider mb-1">Birla White</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">WallCare Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">White cement-based, water-resistant wall putty for interior & exterior</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;899<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-sky-500 hover:bg-sky-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-sky-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-sky-50 to-blue-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=400&q=80" alt="LevelO Putty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-sky-600 font-bold uppercase tracking-wider mb-1">Birla White</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">LevelO Plus Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">Polymer-modified leveling putty for uneven wall surfaces</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,199<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-sky-500 hover:bg-sky-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-sky-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-sky-50 to-blue-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&w=400&q=80" alt="WhiteMax" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">Premium</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-sky-600 font-bold uppercase tracking-wider mb-1">Birla White</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">WhiteMax Acrylic Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">Ready-to-use acrylic putty for super smooth finish</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,499<span class="text-sm text-gray-400 font-normal">/20kg</span></span>
-                                <button class="w-10 h-10 bg-sky-500 hover:bg-sky-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-sky-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-sky-50 to-blue-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?auto=format&fit=crop&w=400&q=80" alt="FinoCare" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-sky-600 font-bold uppercase tracking-wider mb-1">Birla White</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">FinoCare Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">Fine finish putty ideal for POP and gypsum surfaces</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;749<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-sky-500 hover:bg-sky-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-sky-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== ASIAN PAINTS PUTTY ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-500/30">
-                        <i class="fas fa-layer-group text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Asian Paints Putty</h3>
-                        <p class="text-gray-400 text-sm">TruCare Wall Solutions</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-red-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&q=80" alt="TruCare" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">Top Seller</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">TruCare Wall Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">White cement-based putty with superior bonding strength</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;849<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=400&q=80" alt="TruCare Acrylic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">TruCare Acrylic Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">Ready-mix acrylic putty for crack-free smooth walls</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,349<span class="text-sm text-gray-400 font-normal">/20kg</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" alt="SmartCare" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">Waterproof</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">SmartCare Damp Proof</h4>
-                            <p class="text-gray-400 text-sm mb-3">Waterproof putty for damp and moisture-prone walls</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,099<span class="text-sm text-gray-400 font-normal">/20kg</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80" alt="TruCare Exterior" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">TruCare Exterior Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">Weather-resistant exterior putty with UV protection</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;999<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== BERGER PUTTY ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-800 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                        <i class="fas fa-layer-group text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Berger Putty</h3>
-                        <p class="text-gray-400 text-sm">HomeSure Wall Solutions</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-blue-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?auto=format&fit=crop&w=400&q=80" alt="HomeSure" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Popular</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">HomeSure Wall Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">White cement putty with excellent coverage & adhesion</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;799<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80" alt="Berger Acrylic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Bison Acrylic Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">Polymer-enriched acrylic putty for hairline crack filling</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,249<span class="text-sm text-gray-400 font-normal">/20kg</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=400&q=80" alt="WeatherCoat Putty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">Exterior</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">WeatherCoat Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">All-weather exterior putty with anti-fungal properties</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;949<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=400&q=80" alt="Express Putty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Express Putty Plus</h4>
-                            <p class="text-gray-400 text-sm mb-3">Quick-dry formula, ready for paint in just 3 hours</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,099<span class="text-sm text-gray-400 font-normal">/20kg</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== JK LAKSHMI PUTTY ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-lg shadow-orange-500/30">
-                        <i class="fas fa-layer-group text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">JK Lakshmi Putty</h3>
-                        <p class="text-gray-400 text-sm">JK Wall MaxX - Built to Last</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-orange-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-orange-50 to-red-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600607687644-c7f34b5063c7?auto=format&fit=crop&w=400&q=80" alt="Wall MaxX" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full">Value Pack</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-orange-600 font-bold uppercase tracking-wider mb-1">JK Lakshmi</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Wall MaxX Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">High-strength white cement putty with smooth finish</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;699<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-orange-600 hover:bg-orange-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-orange-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-orange-50 to-red-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Wall MaxX Pro" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-orange-600 font-bold uppercase tracking-wider mb-1">JK Lakshmi</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Wall MaxX Pro Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">Professional grade with enhanced polymer bonding</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;899<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-orange-600 hover:bg-orange-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-orange-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-orange-50 to-red-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80" alt="Wall MaxX Acrylic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">Premium</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-orange-600 font-bold uppercase tracking-wider mb-1">JK Lakshmi</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Wall MaxX Acrylic</h4>
-                            <p class="text-gray-400 text-sm mb-3">Acrylic-based ready mix for premium interiors</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,199<span class="text-sm text-gray-400 font-normal">/20kg</span></span>
-                                <button class="w-10 h-10 bg-orange-600 hover:bg-orange-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-orange-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-orange-50 to-red-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80" alt="MaxX Waterproof" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">Waterproof</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-orange-600 font-bold uppercase tracking-wider mb-1">JK Lakshmi</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">MaxX Waterproof Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">Water-resistant formula for bathrooms & kitchens</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;949<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-orange-600 hover:bg-orange-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-orange-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== NEROLAC PUTTY ===== -->
-            <div class="fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg shadow-yellow-500/30">
-                        <i class="fas fa-layer-group text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Nerolac Putty</h3>
-                        <p class="text-gray-400 text-sm">Suraksha Wall Care Range</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-yellow-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1615529328331-f8917597711f?auto=format&fit=crop&w=400&q=80" alt="Suraksha Putty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">Trusted</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Suraksha Wall Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">White cement putty with anti-bacterial protection</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;849<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80" alt="Nerolac Acrylic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Impressions Acrylic Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">Premium acrylic putty for mirror-like wall finish</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,399<span class="text-sm text-gray-400 font-normal">/20kg</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?auto=format&fit=crop&w=400&q=80" alt="Excel Putty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">Exterior</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Excel Exterior Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">All-weather exterior putty with crack-bridging</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;999<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80" alt="Beauty Putty" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Beauty Smooth Putty</h4>
-                            <p class="text-gray-400 text-sm mb-3">Fine-grade putty for ultra-smooth satin finish</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;799<span class="text-sm text-gray-400 font-normal">/40kg</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PRIMER PRODUCTS SECTION ========== -->
-    <section id="primer" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 fade-up">
-                <span class="inline-block bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">Base Coat Essentials</span>
-                <h2 class="font-display text-4xl md:text-5xl font-black text-gray-900 mb-4">Premium Wall Primers</h2>
-                <p class="text-gray-500 text-lg max-w-2xl mx-auto">A great paint job starts with the right primer. Explore top-quality primers for superior adhesion, coverage, and durability.</p>
-            </div>
-
-            <!-- ===== ASIAN PAINTS PRIMER ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-500/30">
-                        <i class="fas fa-fill text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Asian Paints Primer</h3>
-                        <p class="text-gray-400 text-sm">Decoprimer & TruCare Range</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-red-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80" alt="Decoprimer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">Bestseller</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Decoprimer Wall Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Water-based interior primer with excellent coverage & adhesion</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,899<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&w=400&q=80" alt="Exterior Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">Exterior</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Exterior Wall Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Alkali-resistant primer for new & old exterior walls</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=400&q=80" alt="Metal Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Apcolite Metal Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Red oxide primer for iron, steel & metal surfaces</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;699<span class="text-sm text-gray-400 font-normal">/1L</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-red-50 to-orange-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?auto=format&fit=crop&w=400&q=80" alt="Wood Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-red-500 font-bold uppercase tracking-wider mb-1">Asian Paints</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Wood Primer White</h4>
-                            <p class="text-gray-400 text-sm mb-3">Sealer primer for wooden doors, frames & furniture</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;549<span class="text-sm text-gray-400 font-normal">/1L</span></span>
-                                <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-red-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== BERGER PRIMER ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-800 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                        <i class="fas fa-fill text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Berger Primer</h3>
-                        <p class="text-gray-400 text-sm">Professional Primer Solutions</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-blue-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80" alt="Silk Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Premium</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Silk Interior Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Water-based acrylic primer for smooth interior walls</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,799<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&q=80" alt="WeatherCoat Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">Exterior</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">WeatherCoat Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Alkali & moisture resistant exterior wall primer</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,099<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&q=80" alt="Bison Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Bison Cement Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Cement-based primer for new construction & replastered walls</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,499<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=400&q=80" alt="Metal Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-blue-600 font-bold uppercase tracking-wider mb-1">Berger</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Red Oxide Metal Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Anti-corrosive primer for gates, grills & metal surfaces</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;599<span class="text-sm text-gray-400 font-normal">/1L</span></span>
-                                <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-blue-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== NEROLAC PRIMER ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg shadow-yellow-500/30">
-                        <i class="fas fa-fill text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Nerolac Primer</h3>
-                        <p class="text-gray-400 text-sm">Suraksha Primer Range</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-yellow-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80" alt="Impressions Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">Top Rated</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Impressions Wall Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Premium acrylic primer for luxury interior finishes</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,299<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=400&q=80" alt="Excel Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">Exterior</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Excel Exterior Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Weather-guard primer with deep penetration formula</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,999<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?auto=format&fit=crop&w=400&q=80" alt="Beauty Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Beauty Interior Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Smooth white primer for even paint absorption</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,599<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-yellow-50 to-amber-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" alt="Metal Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">Nerolac</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Rust Shield Metal Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Anti-rust zinc chromate primer for all metal surfaces</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;649<span class="text-sm text-gray-400 font-normal">/1L</span></span>
-                                <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-amber-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== DULUX PRIMER ===== -->
-            <div class="mb-20 fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-700 flex items-center justify-center shadow-lg shadow-purple-500/30">
-                        <i class="fas fa-fill text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Dulux Primer</h3>
-                        <p class="text-gray-400 text-sm">International Quality Base Coats</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-purple-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-purple-50 to-violet-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=400&q=80" alt="Dulux Interior" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">Imported</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Dulux</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">SuperCover Interior Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">High-opacity primer for uniform base on all interiors</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,499<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-purple-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-purple-50 to-violet-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Dulux Exterior" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">Exterior</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Dulux</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">WeatherShield Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Heavy-duty exterior primer with UV & alkali resistance</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,799<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-purple-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-purple-50 to-violet-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600607687644-c7f34b5063c7?auto=format&fit=crop&w=400&q=80" alt="Dulux Sealer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Dulux</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Alkali Blocker Sealer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Blocks efflorescence & dampness from new walls</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,899<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-purple-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-purple-50 to-violet-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80" alt="Dulux Wood" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Dulux</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Wood & Metal Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Multi-surface primer for wood, metal & concrete</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;749<span class="text-sm text-gray-400 font-normal">/1L</span></span>
-                                <button class="w-10 h-10 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-purple-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider mb-20"></div>
-
-            <!-- ===== OPUS PRIMER ===== -->
-            <div class="fade-up">
-                <div class="flex items-center space-x-4 mb-10">
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shadow-lg shadow-emerald-500/30">
-                        <i class="fas fa-fill text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-display font-bold text-gray-900">Opus Primer</h3>
-                        <p class="text-gray-400 text-sm">Professional Grade Base Coats</p>
-                    </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-emerald-200 to-transparent ml-6"></div>
-                </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?auto=format&fit=crop&w=400&q=80" alt="Opus Wall Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">Exclusive</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-1">Opus</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Prime Coat Interior</h4>
-                            <p class="text-gray-400 text-sm mb-3">Deep-penetrating acrylic primer for flawless interiors</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,699<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-emerald-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1615529328331-f8917597711f?auto=format&fit=crop&w=400&q=80" alt="Opus Exterior" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">Exterior</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-1">Opus</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Shield Guard Exterior</h4>
-                            <p class="text-gray-400 text-sm mb-3">All-weather exterior primer with anti-algal formula</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;1,999<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-emerald-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80" alt="Opus Eco Primer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 bg-lime-500 text-white text-xs font-bold px-3 py-1 rounded-full">Eco</div>
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-1">Opus</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">Eco Fresh Zero-VOC Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">100% non-toxic primer safe for kids & allergy-prone</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;2,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                                <button class="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-emerald-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-premium bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden card-shine group">
-                        <div class="relative h-52 bg-gradient-to-br from-emerald-50 to-teal-50 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80" alt="Opus Metal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-5">
-                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-1">Opus</p>
-                            <h4 class="text-lg font-bold text-gray-900 mb-2">IronGuard Metal Primer</h4>
-                            <p class="text-gray-400 text-sm mb-3">Anti-corrosion zinc-rich primer for heavy-duty metal</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-black text-gray-900">&#8377;749<span class="text-sm text-gray-400 font-normal">/1L</span></span>
-                                <button class="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl flex items-center justify-center transition shadow-lg shadow-emerald-500/30">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== SERVICES SECTION ========== -->
-    <section id="services" class="py-24 bg-gradient-to-b from-gray-50 to-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 fade-up">
-                <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">What We Offer</span>
-                <h2 class="font-display text-4xl md:text-5xl font-black text-gray-900 mb-4">Our Premium Services</h2>
-                <p class="text-gray-500 text-lg max-w-2xl mx-auto">End-to-end painting solutions with expert consultation, professional execution, and lasting results.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-up">
-                <div class="brand-card bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center group">
-                    <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <i class="fas fa-home text-3xl text-orange-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Interior Painting</h3>
-                    <p class="text-gray-500 leading-relaxed">Transform your interiors with dust-free mechanized painting. Premium finishes for living rooms, bedrooms, and kitchens.</p>
-                    <div class="mt-6 text-orange-500 font-semibold text-sm">Starting &#8377;12/sq.ft <i class="fas fa-arrow-right ml-1"></i></div>
-                </div>
-                <div class="brand-card bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center group">
-                    <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <i class="fas fa-building text-3xl text-blue-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Exterior Painting</h3>
-                    <p class="text-gray-500 leading-relaxed">Weather-proof coating with 7-year warranty. Our exterior solutions withstand rain, sun, and pollution damage.</p>
-                    <div class="mt-6 text-blue-500 font-semibold text-sm">Starting &#8377;15/sq.ft <i class="fas fa-arrow-right ml-1"></i></div>
-                </div>
-                <div class="brand-card bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center group">
-                    <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <i class="fas fa-paint-roller text-3xl text-purple-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Texture & Designer</h3>
-                    <p class="text-gray-500 leading-relaxed">Italian stucco, metallic finishes, and custom textures. Create stunning accent walls with artistic flair.</p>
-                    <div class="mt-6 text-purple-500 font-semibold text-sm">Starting &#8377;45/sq.ft <i class="fas fa-arrow-right ml-1"></i></div>
-                </div>
-                <div class="brand-card bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center group">
-                    <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <i class="fas fa-shield-alt text-3xl text-emerald-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Waterproofing</h3>
-                    <p class="text-gray-500 leading-relaxed">Complete waterproofing solutions for terrace, walls, and bathrooms. Stop leakage permanently.</p>
-                    <div class="mt-6 text-emerald-500 font-semibold text-sm">Starting &#8377;25/sq.ft <i class="fas fa-arrow-right ml-1"></i></div>
-                </div>
-                <div class="brand-card bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center group">
-                    <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-rose-100 to-rose-50 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <i class="fas fa-couch text-3xl text-rose-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Wood & Metal</h3>
-                    <p class="text-gray-500 leading-relaxed">PU polish, duco paint, and enamel coatings for doors, windows, grills, and furniture.</p>
-                    <div class="mt-6 text-rose-500 font-semibold text-sm">Custom Pricing <i class="fas fa-arrow-right ml-1"></i></div>
-                </div>
-                <div class="brand-card bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center group">
-                    <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <i class="fas fa-palette text-3xl text-amber-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Color Consultation</h3>
-                    <p class="text-gray-500 leading-relaxed">Expert color advice from certified consultants. Virtual previews and shade matching at your doorstep.</p>
-                    <div class="mt-6 text-amber-500 font-semibold text-sm">Free with Service <i class="fas fa-arrow-right ml-1"></i></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== WHY CHOOSE US ========== -->
-    <section class="py-24 bg-brand-dark relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(249,115,22,0.1),transparent_50%)]"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(30,64,175,0.1),transparent_50%)]"></div>
-
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16 fade-up">
-                <span class="inline-block bg-orange-500/10 text-orange-400 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">Why Betupaint</span>
-                <h2 class="font-display text-4xl md:text-5xl font-black text-white mb-4">The Betupaint Advantage</h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">What sets us apart from ordinary painting contractors.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 fade-up">
-                <div class="glass rounded-2xl p-8 text-center group hover:bg-white/10 transition-all">
-                    <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-orange-500/20 flex items-center justify-center">
-                        <i class="fas fa-certificate text-2xl text-orange-400"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">Authorized Dealer</h4>
-                    <p class="text-gray-400 text-sm">Official partnerships with top brands ensure genuine products at best prices.</p>
-                </div>
-                <div class="glass rounded-2xl p-8 text-center group hover:bg-white/10 transition-all">
-                    <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-blue-500/20 flex items-center justify-center">
-                        <i class="fas fa-tools text-2xl text-blue-400"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">Mechanized Tools</h4>
-                    <p class="text-gray-400 text-sm">Dust-free sanding, spray painting, and modern equipment for flawless finish.</p>
-                </div>
-                <div class="glass rounded-2xl p-8 text-center group hover:bg-white/10 transition-all">
-                    <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-green-500/20 flex items-center justify-center">
-                        <i class="fas fa-award text-2xl text-green-400"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">1 Year Warranty</h4>
-                    <p class="text-gray-400 text-sm">Comprehensive service warranty covering peeling, cracking, and color fading.</p>
-                </div>
-                <div class="glass rounded-2xl p-8 text-center group hover:bg-white/10 transition-all">
-                    <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-purple-500/20 flex items-center justify-center">
-                        <i class="fas fa-headset text-2xl text-purple-400"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">Dedicated Manager</h4>
-                    <p class="text-gray-400 text-sm">A personal project manager supervises every job from start to handover.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PROCESS / HOW IT WORKS ========== -->
-    <section id="products" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 fade-up">
-                <span class="inline-block bg-green-50 text-green-600 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">Simple Process</span>
-                <h2 class="font-display text-4xl md:text-5xl font-black text-gray-900 mb-4">How It Works</h2>
-                <p class="text-gray-500 text-lg max-w-2xl mx-auto">From consultation to completion - a seamless 4-step journey.</p>
-            </div>
-
-            <div class="grid md:grid-cols-4 gap-8 fade-up">
-                <div class="text-center relative">
-                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center shadow-xl shadow-orange-500/30">
-                        <span class="text-2xl font-black text-white">01</span>
-                    </div>
-                    <h4 class="text-lg font-bold text-gray-900 mb-2">Book Inspection</h4>
-                    <p class="text-gray-500 text-sm">Schedule a free site visit via WhatsApp or call. Our expert visits within 24 hours.</p>
-                    <div class="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-gradient-to-r from-orange-300 to-transparent"></div>
-                </div>
-                <div class="text-center relative">
-                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center shadow-xl shadow-blue-500/30">
-                        <span class="text-2xl font-black text-white">02</span>
-                    </div>
-                    <h4 class="text-lg font-bold text-gray-900 mb-2">Get Quotation</h4>
-                    <p class="text-gray-500 text-sm">Receive a detailed quotation with brand options, color choices, and transparent pricing.</p>
-                    <div class="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-gradient-to-r from-blue-300 to-transparent"></div>
-                </div>
-                <div class="text-center relative">
-                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-xl shadow-emerald-500/30">
-                        <span class="text-2xl font-black text-white">03</span>
-                    </div>
-                    <h4 class="text-lg font-bold text-gray-900 mb-2">Execution</h4>
-                    <p class="text-gray-500 text-sm">Our trained crew handles everything - from surface prep to final coat with zero hassle.</p>
-                    <div class="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-gradient-to-r from-emerald-300 to-transparent"></div>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center shadow-xl shadow-purple-500/30">
-                        <span class="text-2xl font-black text-white">04</span>
-                    </div>
-                    <h4 class="text-lg font-bold text-gray-900 mb-2">Final Handover</h4>
-                    <p class="text-gray-500 text-sm">Thorough cleanup, quality inspection, and warranty card provided on completion.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== TESTIMONIALS ========== -->
-    <section class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 fade-up">
-                <span class="inline-block bg-purple-50 text-purple-600 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">Testimonials</span>
-                <h2 class="font-display text-4xl md:text-5xl font-black text-gray-900 mb-4">What Our Clients Say</h2>
-                <p class="text-gray-500 text-lg">Real reviews from verified customers across India.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 fade-up">
-                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 relative">
-                    <div class="absolute -top-4 left-8 text-5xl text-orange-200 font-serif">"</div>
-                    <div class="flex items-center space-x-1 mb-4 mt-4">
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6 leading-relaxed">"Absolutely stunning work! The team from Betupaint transformed our 3BHK in just 5 days. The Asian Paints Royale finish looks incredible. Highly recommended!"</p>
-                    <div class="flex items-center space-x-3">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-400 flex items-center justify-center text-white font-bold">RP</div>
+                <div class="about-values">
+                    <div class="about-value">
+                        <div class="icon"><i class="fas fa-certificate"></i></div>
                         <div>
-                            <p class="font-bold text-gray-900">Rahul Patel</p>
-                            <p class="text-sm text-gray-400">Mumbai, Maharashtra</p>
+                            <h4>Authorized Dealer</h4>
+                            <p>Genuine products direct from top paint companies.</p>
+                        </div>
+                    </div>
+                    <div class="about-value">
+                        <div class="icon"><i class="fas fa-tools"></i></div>
+                        <div>
+                            <h4>Modern Equipment</h4>
+                            <p>Dust-free sanding and spray tools for perfect finish.</p>
+                        </div>
+                    </div>
+                    <div class="about-value">
+                        <div class="icon"><i class="fas fa-award"></i></div>
+                        <div>
+                            <h4>1-Year Warranty</h4>
+                            <p>Service warranty covering peeling and color fading.</p>
+                        </div>
+                    </div>
+                    <div class="about-value">
+                        <div class="icon"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <h4>Dedicated Manager</h4>
+                            <p>A personal manager for every project, start to finish.</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 relative">
-                    <div class="absolute -top-4 left-8 text-5xl text-blue-200 font-serif">"</div>
-                    <div class="flex items-center space-x-1 mb-4 mt-4">
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6 leading-relaxed">"Used Berger Silk for our villa exterior. The WeatherCoat finish has survived two monsoons without any issues. Professional service with fair pricing."</p>
-                    <div class="flex items-center space-x-3">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-400 flex items-center justify-center text-white font-bold">AS</div>
-                        <div>
-                            <p class="font-bold text-gray-900">Ananya Sharma</p>
-                            <p class="text-sm text-gray-400">Bangalore, Karnataka</p>
+
+                <div class="why-choose">
+                    <h3>Why Choose Betupaint?</h3>
+                    <div class="why-pillars">
+                        <div class="pillar">
+                            <i class="fas fa-star"></i>
+                            <h4>Unmatched Quality</h4>
                         </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 relative">
-                    <div class="absolute -top-4 left-8 text-5xl text-green-200 font-serif">"</div>
-                    <div class="flex items-center space-x-1 mb-4 mt-4">
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400 opacity-30"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6 leading-relaxed">"The texture wall they did using Nerolac Impressions is a showstopper. Every guest asks about it! The dedicated project manager kept us informed throughout."</p>
-                    <div class="flex items-center space-x-3">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-400 flex items-center justify-center text-white font-bold">VK</div>
-                        <div>
-                            <p class="font-bold text-gray-900">Vikram Kumar</p>
-                            <p class="text-sm text-gray-400">Delhi NCR</p>
+                        <div class="pillar">
+                            <i class="fas fa-paint-brush"></i>
+                            <h4>Flawless Finish</h4>
+                        </div>
+                        <div class="pillar">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Premium Products</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ========== CTA SECTION ========== -->
-    <section class="py-24 bg-gradient-to-br from-brand-blue via-blue-800 to-brand-dark relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(249,115,22,0.15),transparent_50%)]"></div>
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 fade-up">
-            <h2 class="font-display text-4xl md:text-6xl font-black text-white mb-6">Ready to Transform<br>Your Space?</h2>
-            <p class="text-blue-200 text-xl mb-10 max-w-2xl mx-auto">Get a free consultation and quotation within 24 hours. No hidden charges, no obligations.</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://wa.me/911234567890" class="btn-premium text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl flex items-center">
-                    <i class="fab fa-whatsapp text-2xl mr-3"></i>
-                    Chat on WhatsApp
+<!-- ===== OUR PARTNER ===== -->
+<section id="partner" class="partner">
+    <div class="container">
+        <div class="partner-inner">
+            <div class="partner-content">
+                <span class="section-label">Our Partner</span>
+                <h2 class="section-title">Ravi Colour House</h2>
+                <p>Betupaint proudly partners with <strong>Ravi Colour House</strong> — one of the most trusted paint distribution hubs in the region. Together, we ensure every customer gets access to the widest range of premium paint products with guaranteed authenticity and best-market pricing.</p>
+                <p>With decades of presence in the paint industry and deep relationships with top manufacturers, Ravi Colour House enables us to deliver uncompromised quality to each and every project.</p>
+
+                <div class="partner-pillars">
+                    <div class="partner-pillar">
+                        <i class="fas fa-truck"></i>
+                        <h4>Pan-India Supply</h4>
+                        <p>Fast, reliable delivery nationwide</p>
+                    </div>
+                    <div class="partner-pillar">
+                        <i class="fas fa-check-double"></i>
+                        <h4>100% Genuine</h4>
+                        <p>Authorised products, zero counterfeits</p>
+                    </div>
+                    <div class="partner-pillar">
+                        <i class="fas fa-tags"></i>
+                        <h4>Best Pricing</h4>
+                        <p>Competitive rates on all brands</p>
+                    </div>
+                </div>
+
+                <a href="#contact" class="btn-primary">
+                    <i class="fas fa-phone"></i> Contact Our Partner
                 </a>
-                <a href="tel:+911234567890" class="bg-white/10 hover:bg-white/20 backdrop-blur text-white px-10 py-5 rounded-full font-bold text-lg border border-white/20 flex items-center transition">
-                    <i class="fas fa-phone mr-3"></i>
-                    Call Now
+            </div>
+            <div class="partner-img">
+                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=700&q=80" alt="Ravi Colour House">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== OUR BRANDS ===== -->
+<section id="brands" class="brands">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Our Brands</span>
+            <h2 class="section-title">Paint Brands We Carry</h2>
+            <p class="section-subtitle">We are authorized dealers for India's most trusted paint brands — from premium luxury finishes to everyday quality coatings.</p>
+        </div>
+        <div class="brands-grid">
+            <div class="brand-card">
+                <div class="brand-logo-icon" style="background:#fef2f2;color:#ef4444"><i class="fas fa-palette"></i></div>
+                <h4>Asian Paints</h4>
+                <p>India's #1 Paint Brand</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-icon" style="background:#eff6ff;color:#3b82f6"><i class="fas fa-brush"></i></div>
+                <h4>Berger Paints</h4>
+                <p>Colour with Confidence</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-icon" style="background:#fefce8;color:#ca8a04"><i class="fas fa-paint-roller"></i></div>
+                <h4>Nerolac</h4>
+                <p>Goodlass Nerolac Paints</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-icon" style="background:#f0fdf4;color:#16a34a"><i class="fas fa-leaf"></i></div>
+                <h4>Opus Paints</h4>
+                <p>Colour Experts</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-icon" style="background:#faf5ff;color:#9333ea"><i class="fas fa-star"></i></div>
+                <h4>Dulux</h4>
+                <p>Let's Colour</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-icon" style="background:#eef2ff;color:#4f46e5"><i class="fas fa-droplet"></i></div>
+                <h4>Indigo Paints</h4>
+                <p>India's Fastest Growing</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-icon" style="background:#f0fdfa;color:#0d9488"><i class="fas fa-building"></i></div>
+                <h4>JSW Paints</h4>
+                <p>Total Colour Solutions</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-icon" style="background:#fff1f2;color:#f43f5e"><i class="fas fa-home"></i></div>
+                <h4>Shalimar</h4>
+                <p>Trusted Since 1902</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-icon" style="background:#fafafa;color:#737373"><i class="fas fa-square"></i></div>
+                <h4>Birla White</h4>
+                <p>Wall Care Putty Leaders</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-icon" style="background:#fdf4ff;color:#c026d3"><i class="fas fa-certificate"></i></div>
+                <h4>JK Lakshmi</h4>
+                <p>Wall Putty Specialists</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery" class="gallery">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Gallery</span>
+            <h2 class="section-title">Our Work Speaks for Itself</h2>
+            <p class="section-subtitle">Browse through our portfolio of completed projects — interiors, exteriors, textures, and more.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=500&q=80" alt="Interior Painting">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&w=500&q=80" alt="Exterior Painting">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?auto=format&fit=crop&w=500&q=80" alt="Texture Walls">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=500&q=80" alt="Bedroom Interior">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=500&q=80" alt="Living Room">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="Designer Wall">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=500&q=80" alt="Primer Coat">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?auto=format&fit=crop&w=500&q=80" alt="Color Consultation">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=500&q=80" alt="Home Renovation">
+                <div class="overlay"><i class="fas fa-expand"></i></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TEAM / OWNERS ===== -->
+<section id="team" class="team">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Our Team</span>
+            <h2 class="section-title">Meet Our Experts</h2>
+            <p class="section-subtitle">Our dedicated team of painting professionals is committed to delivering the best results for your home or business.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-card-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Rajesh Sharma">
+                </div>
+                <div class="team-card-body">
+                    <h3>Rajesh Sharma</h3>
+                    <p class="role">Founder & Director</p>
+                    <p>15+ years in the paint industry. Rajesh founded Betupaint with a vision to bring professional painting standards to every Indian home.</p>
+                    <div class="contact-links">
+                        <a href="tel:+919876543210" class="phone"><i class="fas fa-phone"></i> Call</a>
+                        <a href="https://wa.me/919876543210" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-card-img">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Anil Verma">
+                </div>
+                <div class="team-card-body">
+                    <h3>Anil Verma</h3>
+                    <p class="role">Head of Operations</p>
+                    <p>Expert in project management and client relations. Anil ensures every job is completed on time, within budget, and to the highest standard.</p>
+                    <div class="contact-links">
+                        <a href="tel:+919876543211" class="phone"><i class="fas fa-phone"></i> Call</a>
+                        <a href="https://wa.me/919876543211" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-card-img">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" alt="Suresh Kumar">
+                </div>
+                <div class="team-card-body">
+                    <h3>Suresh Kumar</h3>
+                    <p class="role">Senior Paint Consultant</p>
+                    <p>Certified color consultant and texture specialist. Suresh brings artistic flair and technical precision to every project he leads.</p>
+                    <div class="contact-links">
+                        <a href="tel:+919876543212" class="phone"><i class="fas fa-phone"></i> Call</a>
+                        <a href="https://wa.me/919876543212" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Testimonials</span>
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Real reviews from verified customers across India.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p>Absolutely stunning work! The team from Betupaint transformed our 3BHK in just 5 days. The Asian Paints Royale finish looks incredible. Highly recommended!</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar" style="background:linear-gradient(135deg,#f97316,#ea580c)">RP</div>
+                    <div>
+                        <h4>Rahul Patel</h4>
+                        <span>Mumbai, Maharashtra</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p>Used Berger Silk for our villa exterior. The WeatherCoat finish has survived two monsoons without any issues. Professional service with very fair pricing.</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar" style="background:linear-gradient(135deg,#3b82f6,#4f46e5)">AS</div>
+                    <div>
+                        <h4>Ananya Sharma</h4>
+                        <span>Bangalore, Karnataka</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star" style="opacity:0.3"></i>
+                </div>
+                <p>The texture wall they did using Nerolac Impressions is a showstopper. Every guest asks about it! The dedicated project manager kept us informed throughout.</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar" style="background:linear-gradient(135deg,#16a34a,#059669)">VK</div>
+                    <div>
+                        <h4>Vikram Kumar</h4>
+                        <span>Delhi NCR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<div class="cta-banner">
+    <div class="container">
+        <div class="cta-banner-inner">
+            <h2>Ready to Transform<br><em>Your Space?</em></h2>
+            <p>Get a free consultation and quotation within 24 hours. No hidden charges, no obligations.</p>
+            <div class="cta-banner-btns">
+                <a href="https://wa.me/911234567890" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a href="tel:+911234567890" class="btn-call">
+                    <i class="fas fa-phone"></i> Call Now
                 </a>
             </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- ========== PREMIUM FOOTER ========== -->
-    <footer class="bg-brand-dark pt-20 pb-8">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-12 pb-16 border-b border-white/10">
-                <div>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center">
-                            <i class="fas fa-paint-roller text-white text-lg"></i>
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Contact Us</span>
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Reach out to us for a free site visit, quotation, or any paint-related query. We respond within 2 hours.</p>
+        </div>
+        <div class="contact-inner">
+            <div>
+                <div class="contact-info">
+                    <h3>Our Contact Details</h3>
+                    <div class="contact-info-items">
+                        <div class="contact-item">
+                            <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="ci-text">
+                                <h5>Address</h5>
+                                <p>45 Colour Street, Connaught Place,<br>New Delhi, India - 110001</p>
+                            </div>
                         </div>
-                        <span class="text-2xl font-black tracking-tight text-white">BETU<span class="text-orange-400">PAINT</span></span>
+                        <div class="contact-item">
+                            <div class="ci-icon"><i class="fas fa-phone"></i></div>
+                            <div class="ci-text">
+                                <h5>Phone Numbers</h5>
+                                <a href="tel:+919876543210">+91 98765 43210</a><br>
+                                <a href="tel:+919876543211">+91 98765 43211</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="ci-text">
+                                <h5>Email</h5>
+                                <a href="mailto:info@betupaint.com">info@betupaint.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="ci-icon"><i class="fas fa-clock"></i></div>
+                            <div class="ci-text">
+                                <h5>Working Hours</h5>
+                                <p>Monday – Saturday: 9:00 AM – 7:00 PM<br>Sunday: 10:00 AM – 3:00 PM</p>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-6">India's premium painting service. Transforming homes with quality, safety, and style since 2015.</p>
-                    <div class="flex space-x-3">
-                        <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
                 </div>
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-6">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#home" class="text-gray-500 hover:text-orange-400 transition text-sm">Home</a></li>
-                        <li><a href="#brands" class="text-gray-500 hover:text-orange-400 transition text-sm">Our Brands</a></li>
-                        <li><a href="#services" class="text-gray-500 hover:text-orange-400 transition text-sm">Services</a></li>
-                        <li><a href="products.html" class="text-gray-500 hover:text-orange-400 transition text-sm">Products</a></li>
-                        <li><a href="about.html" class="text-gray-500 hover:text-orange-400 transition text-sm">About Us</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-6">Our Brands</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#brands" class="text-gray-500 hover:text-red-400 transition text-sm">Asian Paints</a></li>
-                        <li><a href="#brands" class="text-gray-500 hover:text-blue-400 transition text-sm">Berger Paints</a></li>
-                        <li><a href="#brands" class="text-gray-500 hover:text-yellow-400 transition text-sm">Nerolac</a></li>
-                        <li><a href="#brands" class="text-gray-500 hover:text-green-400 transition text-sm">Opus Paints</a></li>
-                        <li><a href="#brands" class="text-gray-500 hover:text-purple-400 transition text-sm">Dulux</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-6">Contact Info</h4>
-                    <ul class="space-y-4">
-                        <li class="flex items-start space-x-3">
-                            <i class="fas fa-map-marker-alt text-orange-400 mt-1"></i>
-                            <span class="text-gray-500 text-sm">45 Color Street, New Delhi, India 110001</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i class="fas fa-phone text-orange-400"></i>
-                            <span class="text-gray-500 text-sm">+91 98765 43210</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i class="fas fa-envelope text-orange-400"></i>
-                            <span class="text-gray-500 text-sm">info@betupaint.com</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i class="fas fa-clock text-orange-400"></i>
-                            <span class="text-gray-500 text-sm">Mon - Sat: 9AM - 7PM</span>
-                        </li>
-                    </ul>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.987!2d77.2194!3d28.6329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM3JzU4LjUiTiA3N8KwMTMnMDkuOCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
-            <div class="pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-600 text-sm">&copy; 2026 Betupaint Services Pvt. Ltd. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-600 hover:text-gray-400 text-sm transition">Privacy Policy</a>
-                    <a href="#" class="text-gray-600 hover:text-gray-400 text-sm transition">Terms of Service</a>
-                    <a href="#" class="text-gray-600 hover:text-gray-400 text-sm transition">Refund Policy</a>
+
+            <div class="contact-form-card">
+                <h3>Book a Free Consultation</h3>
+                <p>Fill in your details and we'll get back to you within 2 hours.</p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number *</label>
+                        <input type="tel" id="mobile" placeholder="+91 XXXXX XXXXX">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Preferred Paint Brand</label>
+                    <select id="paintBrand">
+                        <option value="Not Selected">Choose a brand (optional)</option>
+                        <option>Asian Paints</option>
+                        <option>Berger Paints</option>
+                        <option>Nerolac</option>
+                        <option>Opus Paints</option>
+                        <option>Dulux</option>
+                        <option>Indigo Paints</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Your Query / Requirement</label>
+                    <textarea id="query" placeholder="Tell us about your painting requirement..."></textarea>
+                </div>
+                <button class="form-submit" onclick="betuWhatsApp()">
+                    <i class="fab fa-whatsapp" style="font-size:20px"></i>
+                    Send via WhatsApp
+                </button>
+                <p class="form-note"><i class="fas fa-lock"></i> Your information is 100% secure and private.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-paint-roller"></i></div>
+                    <div class="logo-text">
+                        <span>BETU<b>PAINT</b></span>
+                        <small>Premium Painting</small>
+                    </div>
+                </div>
+                <p>India's premium painting service. Transforming homes and businesses with quality, safety, and style since 2010.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#partner">Our Partner</a></li>
+                    <li><a href="#brands">Our Brands</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Our Brands</h4>
+                <ul>
+                    <li><a href="#brands">Asian Paints</a></li>
+                    <li><a href="#brands">Berger Paints</a></li>
+                    <li><a href="#brands">Nerolac</a></li>
+                    <li><a href="#brands">Opus Paints</a></li>
+                    <li><a href="#brands">Dulux</a></li>
+                    <li><a href="#brands">Indigo Paints</a></li>
+                    <li><a href="#brands">JSW Paints</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <div class="footer-contact-items">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>45 Colour Street, Connaught Place, New Delhi, India - 110001</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 98765 43210<br>+91 98765 43211</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@betupaint.com</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon – Sat: 9 AM – 7 PM<br>Sun: 10 AM – 3 PM</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <!-- ========== FLOATING WHATSAPP BUTTON ========== -->
-    <a href="https://wa.me/911234567890" target="_blank" class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110">
-        <i class="fab fa-whatsapp text-white text-3xl"></i>
-    </a>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Betupaint Services Pvt. Ltd. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Refund Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
-    <!-- ========== SCRIPTS ========== -->
-    <script>
-        // WhatsApp form handler
-        function betuWhatsApp() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const mobile = document.getElementById('mobile').value;
-            const brand = document.getElementById('paintBrand').value;
-            const query = document.getElementById('query').value;
+<!-- ===== FLOATING WHATSAPP ===== -->
+<a href="https://wa.me/911234567890" target="_blank" class="float-wa" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
-            if(!name || !mobile) {
-                alert("Please enter your name and mobile number!");
-                return;
-            }
+<script>
+    function closeMobileNav() {
+        document.getElementById('mobileNav').classList.remove('open');
+    }
 
-            const myNum = "911234567890";
-            const message = `*BETUPAINT SERVICE INQUIRY*%0A` +
-                            `--------------------------%0A` +
-                            `*Customer:* ${name}%0A` +
-                            `*Mobile:* ${mobile}%0A` +
-                            `*Email:* ${email}%0A` +
-                            `*Preferred Brand:* ${brand}%0A` +
-                            `*Query:* ${query || 'N/A'}%0A` +
-                            `--------------------------%0A` +
-                            `Please contact me for a free site visit.`;
+    function betuWhatsApp() {
+        const name = document.getElementById('name').value.trim();
+        const mobile = document.getElementById('mobile').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const brand = document.getElementById('paintBrand').value;
+        const query = document.getElementById('query').value.trim();
 
-            window.open(`https://wa.me/${myNum}?text=${message}`, '_blank');
+        if (!name || !mobile) {
+            alert('Please enter your name and mobile number.');
+            return;
         }
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-brand-dark/95', 'backdrop-blur-xl', 'shadow-2xl');
-                navbar.classList.remove('bg-transparent');
-            } else {
-                navbar.classList.remove('bg-brand-dark/95', 'backdrop-blur-xl', 'shadow-2xl');
-            }
+        const number = '911234567890';
+        const msg = `*BETUPAINT INQUIRY*%0A` +
+                    `----------------------------%0A` +
+                    `*Name:* ${name}%0A` +
+                    `*Mobile:* ${mobile}%0A` +
+                    `*Email:* ${email || 'N/A'}%0A` +
+                    `*Brand:* ${brand}%0A` +
+                    `*Query:* ${query || 'General Inquiry'}%0A` +
+                    `----------------------------%0A` +
+                    `Please get in touch for a free site visit.`;
+
+        window.open(`https://wa.me/${number}?text=${msg}`, '_blank');
+    }
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
         });
-
-        // Scroll reveal animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    </script>
+        navLinks.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+        });
+    });
+</script>
 </body>
 </html>

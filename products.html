@@ -4,355 +4,611 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Betupaint | All Products</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { display: ['Playfair Display', 'serif'], sans: ['Inter', 'sans-serif'] },
-                    colors: { brand: { blue: '#1e40af', orange: '#f97316', gold: '#d4a853', dark: '#0f172a' } }
-                }
-            }
-        }
-    </script>
-    <style>
-        * { scroll-behavior: smooth; }
-        .btn-premium { background: linear-gradient(135deg, #f97316, #ea580c); transition: all 0.3s; position: relative; overflow: hidden; }
-        .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(249,115,22,0.4); }
-        .product-card { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0,0,0,0.12); }
-        .fade-up { opacity:0; transform:translateY(40px); transition:all 0.8s cubic-bezier(0.16,1,0.3,1); }
-        .fade-up.visible { opacity:1; transform:translateY(0); }
-        .filter-btn.active { background: linear-gradient(135deg, #f97316, #ea580c); color: white; }
-        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
-        .mobile-menu.open { transform: translateX(0); }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gray-50 font-sans text-gray-800 pt-[72px]">
+<body>
 
-    <!-- Navbar -->
-    <nav class="bg-brand-dark/95 backdrop-blur-xl shadow-2xl fixed w-full top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center">
-                    <i class="fas fa-paint-roller text-white text-lg"></i>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-2xl font-black tracking-tight text-white">BETU<span class="text-orange-400">PAINT</span></span>
-                    <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-gray-400">Premium Painting</span>
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-paint-roller"></i></div>
+                <div class="logo-text">
+                    <span>BETU<b>PAINT</b></span>
+                    <small>Premium Painting</small>
                 </div>
             </a>
-
-            <div class="hidden lg:flex items-center space-x-6">
-                <a href="index.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Home</a>
-                <a href="index.html#brands" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Brands</a>
-                <a href="index.html#putty" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Putty</a>
-                <a href="index.html#primer" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Primer</a>
-                <a href="products.html" class="text-orange-400 font-medium text-sm uppercase tracking-wider">Products</a>
-                <a href="index.html#services" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Services</a>
-                <a href="about.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">About</a>
-                <a href="contact.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Contact</a>
-            </div>
-
-            <div class="hidden lg:flex items-center space-x-4">
-                <a href="index.html#quote" class="btn-premium text-white px-7 py-3 rounded-full font-bold text-sm shadow-lg">
-                    <i class="fas fa-calendar-check mr-2"></i>Book Free Consultation
-                </a>
-            </div>
-
-            <button onclick="document.getElementById('mobileMenu').classList.toggle('open')" class="lg:hidden text-white text-2xl">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#partner">Our Partner</a></li>
+                <li><a href="index.html#brands">Our Brands</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#team">Our Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="nav-cta">Book Free Consultation</a>
+            <button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')">
                 <i class="fas fa-bars"></i>
             </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-brand-dark/98 backdrop-blur-xl flex flex-col items-center justify-center space-y-6">
-        <button onclick="this.parentElement.classList.remove('open')" class="absolute top-6 right-6 text-white text-3xl"><i class="fas fa-times"></i></button>
-        <a href="index.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Home</a>
-        <a href="index.html#brands" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Brands</a>
-        <a href="index.html#putty" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Putty</a>
-        <a href="index.html#primer" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Primer</a>
-        <a href="products.html" class="text-2xl text-orange-400 font-semibold">Products</a>
-        <a href="index.html#services" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Services</a>
-        <a href="about.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">About</a>
-        <a href="contact.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Contact</a>
-        <a href="index.html#quote" class="btn-premium text-white px-8 py-3 rounded-full font-bold mt-4">Book Free Consultation</a>
+        </nav>
     </div>
+    <div id="mobileNav" class="mobile-nav">
+        <ul>
+            <li><a href="index.html" onclick="closeMobileNav()">Home</a></li>
+            <li><a href="about.html" onclick="closeMobileNav()">About</a></li>
+            <li><a href="index.html#partner" onclick="closeMobileNav()">Our Partner</a></li>
+            <li><a href="index.html#brands" onclick="closeMobileNav()">Our Brands</a></li>
+            <li><a href="index.html#gallery" onclick="closeMobileNav()">Gallery</a></li>
+            <li><a href="index.html#team" onclick="closeMobileNav()">Our Team</a></li>
+            <li><a href="contact.html" onclick="closeMobileNav()">Contact</a></li>
+        </ul>
+    </div>
+</header>
 
-    <!-- Page Header -->
-    <section class="bg-gradient-to-br from-brand-dark via-blue-900 to-brand-blue py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(249,115,22,0.1),transparent_50%)]"></div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <span class="inline-block bg-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">Our Collection</span>
-            <h1 class="font-display text-4xl md:text-6xl font-black text-white mb-4">All Products</h1>
-            <p class="text-blue-200 text-lg max-w-2xl mx-auto">Browse our complete catalog of premium paints from India's top brands.</p>
+<!-- ===== PAGE HERO ===== -->
+<div class="page-hero">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span class="current">All Products</span>
         </div>
-    </section>
+        <h1>Our Product Catalogue</h1>
+        <p>Browse our complete range of premium paints, putties, and primers from India's most trusted brands.</p>
+    </div>
+</div>
 
-    <!-- Filter Tabs -->
-    <section class="py-8 bg-white border-b border-gray-100 sticky top-[72px] z-40">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-wrap gap-3 justify-center">
-                <button class="filter-btn active px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-200 transition-all" onclick="filterProducts('all', this)">All Brands</button>
-                <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-600 hover:border-red-300 hover:text-red-500 transition-all" onclick="filterProducts('asian', this)">Asian Paints</button>
-                <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-600 hover:border-blue-300 hover:text-blue-500 transition-all" onclick="filterProducts('berger', this)">Berger</button>
-                <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-600 hover:border-amber-300 hover:text-amber-500 transition-all" onclick="filterProducts('nerolac', this)">Nerolac</button>
-                <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-600 hover:border-emerald-300 hover:text-emerald-500 transition-all" onclick="filterProducts('opus', this)">Opus</button>
-                <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-600 hover:border-purple-300 hover:text-purple-500 transition-all" onclick="filterProducts('dulux', this)">Dulux</button>
+<!-- ===== FILTER BAR ===== -->
+<div class="filter-bar">
+    <div class="container">
+        <div class="filter-bar-inner">
+            <span class="filter-label">Filter by:</span>
+            <button class="filter-btn active" onclick="filterProducts('all', this)">All Brands</button>
+            <button class="filter-btn" onclick="filterProducts('asian', this)">Asian Paints</button>
+            <button class="filter-btn" onclick="filterProducts('berger', this)">Berger</button>
+            <button class="filter-btn" onclick="filterProducts('nerolac', this)">Nerolac</button>
+            <button class="filter-btn" onclick="filterProducts('opus', this)">Opus</button>
+            <button class="filter-btn" onclick="filterProducts('dulux', this)">Dulux</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== PRODUCTS ===== -->
+<div class="products-section">
+    <div class="container">
+
+        <!-- ASIAN PAINTS -->
+        <div class="brand-group" data-group="asian">
+            <div class="brand-group-header">
+                <div class="brand-group-icon" style="background:#fef2f2;color:#ef4444"><i class="fas fa-palette"></i></div>
+                <div class="brand-group-title">
+                    <h2>Asian Paints</h2>
+                    <p>India's #1 Paint Company</p>
+                </div>
+                <div class="brand-group-line"></div>
+            </div>
+            <div class="products-grid">
+                <div class="product-card" data-brand="asian">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80" alt="Royale Luxury Emulsion">
+                        <span class="badge" style="background:#ef4444">Bestseller</span>
+                        <span class="brand-tag" style="color:#ef4444">Asian Paints</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Royale Luxury Emulsion</h4>
+                        <p>Premium interior finish with Teflon surface protector</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;4,299 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#ef4444" onclick="enquireWhatsApp('Royale Luxury Emulsion', 'Asian Paints', '&#8377;4,299/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="asian">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&w=400&q=80" alt="Apcolite Premium Gloss">
+                        <span class="brand-tag" style="color:#ef4444">Asian Paints</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Apcolite Premium Gloss</h4>
+                        <p>High gloss enamel for wood & metal surfaces</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;899 <span>/ 1L</span></div>
+                            <button class="enquire-btn" style="background:#ef4444" onclick="enquireWhatsApp('Apcolite Premium Gloss', 'Asian Paints', '&#8377;899/1L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="asian">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=400&q=80" alt="Ace Exterior Emulsion">
+                        <span class="badge" style="background:#16a34a">Value Pick</span>
+                        <span class="brand-tag" style="color:#ef4444">Asian Paints</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Ace Exterior Emulsion</h4>
+                        <p>Weather-resistant exterior paint with anti-algal formula</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;2,199 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#ef4444" onclick="enquireWhatsApp('Ace Exterior Emulsion', 'Asian Paints', '&#8377;2,199/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="asian">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?auto=format&fit=crop&w=400&q=80" alt="Tractor Distemper">
+                        <span class="brand-tag" style="color:#ef4444">Asian Paints</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Tractor Distemper</h4>
+                        <p>Smooth matte finish for budget-friendly interiors</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;649 <span>/ 5kg</span></div>
+                            <button class="enquire-btn" style="background:#ef4444" onclick="enquireWhatsApp('Tractor Distemper', 'Asian Paints', '&#8377;649/5kg')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Products Grid -->
-    <section class="py-16">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="productsGrid">
-
-                <!-- Asian Paints Products -->
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="asian">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80" alt="Royale" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">Bestseller</div>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-red-600">Asian Paints</div>
+        <!-- BERGER PAINTS -->
+        <div class="brand-group" data-group="berger">
+            <div class="brand-group-header">
+                <div class="brand-group-icon" style="background:#eff6ff;color:#3b82f6"><i class="fas fa-brush"></i></div>
+                <div class="brand-group-title">
+                    <h2>Berger Paints</h2>
+                    <p>Colour with Confidence</p>
+                </div>
+                <div class="brand-group-line"></div>
+            </div>
+            <div class="products-grid">
+                <div class="product-card" data-brand="berger">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80" alt="Silk Luxury Emulsion">
+                        <span class="badge" style="background:#3b82f6">Premium</span>
+                        <span class="brand-tag" style="color:#3b82f6">Berger</span>
                     </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Royale Luxury Emulsion</h4>
-                        <p class="text-gray-400 text-sm mb-3">Premium interior with Teflon protector</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;4,299<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
+                    <div class="product-card-body">
+                        <h4>Silk Luxury Emulsion</h4>
+                        <p>Silky smooth finish with stain-guard technology</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;3,899 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#3b82f6" onclick="enquireWhatsApp('Silk Luxury Emulsion', 'Berger Paints', '&#8377;3,899/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
                         </div>
                     </div>
                 </div>
-
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="asian">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&w=400&q=80" alt="Apcolite" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-red-600">Asian Paints</div>
+                <div class="product-card" data-brand="berger">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&q=80" alt="WeatherCoat All Guard">
+                        <span class="brand-tag" style="color:#3b82f6">Berger</span>
                     </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Apcolite Premium Gloss</h4>
-                        <p class="text-gray-400 text-sm mb-3">High gloss enamel for wood & metal</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;899<span class="text-sm text-gray-400 font-normal">/1L</span></span>
-                            <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
+                    <div class="product-card-body">
+                        <h4>WeatherCoat All Guard</h4>
+                        <p>10-year protection against weather damage</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;3,199 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#3b82f6" onclick="enquireWhatsApp('WeatherCoat All Guard', 'Berger Paints', '&#8377;3,199/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
                         </div>
                     </div>
                 </div>
-
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="asian">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=400&q=80" alt="Ace" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">Value Pick</div>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-red-600">Asian Paints</div>
+                <div class="product-card" data-brand="berger">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&q=80" alt="Rangoli Total Care">
+                        <span class="badge" style="background:#16a34a">Eco-Friendly</span>
+                        <span class="brand-tag" style="color:#3b82f6">Berger</span>
                     </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Ace Exterior Emulsion</h4>
-                        <p class="text-gray-400 text-sm mb-3">Weather-resistant anti-algal formula</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;2,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
+                    <div class="product-card-body">
+                        <h4>Rangoli Total Care</h4>
+                        <p>Anti-bacterial paint safe for kids' rooms</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;2,499 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#3b82f6" onclick="enquireWhatsApp('Rangoli Total Care', 'Berger Paints', '&#8377;2,499/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Berger Products -->
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="berger">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80" alt="Silk" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Premium</div>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-blue-600">Berger</div>
+                <div class="product-card" data-brand="berger">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=400&q=80" alt="Wall Primer Premium">
+                        <span class="brand-tag" style="color:#3b82f6">Berger</span>
                     </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Silk Luxury Emulsion</h4>
-                        <p class="text-gray-400 text-sm mb-3">Silky smooth with stain-guard tech</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;3,899<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
+                    <div class="product-card-body">
+                        <h4>Wall Primer Premium</h4>
+                        <p>High-adhesion primer for perfect base coating</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;1,199 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#3b82f6" onclick="enquireWhatsApp('Wall Primer Premium', 'Berger Paints', '&#8377;1,199/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
                         </div>
                     </div>
                 </div>
-
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="berger">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&q=80" alt="WeatherCoat" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-blue-600">Berger</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">WeatherCoat All Guard</h4>
-                        <p class="text-gray-400 text-sm mb-3">10-year weather protection</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;3,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="berger">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&q=80" alt="Rangoli" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">Eco-Friendly</div>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-blue-600">Berger</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Rangoli Total Care</h4>
-                        <p class="text-gray-400 text-sm mb-3">Anti-bacterial, safe for kids' rooms</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;2,499<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Nerolac Products -->
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="nerolac">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80" alt="Impressions" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">Top Rated</div>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-amber-600">Nerolac</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Impressions 24 Carat</h4>
-                        <p class="text-gray-400 text-sm mb-3">Ultra-premium gold-class finish</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;4,599<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="nerolac">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=400&q=80" alt="Beauty" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-amber-600">Nerolac</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Beauty Smooth Finish</h4>
-                        <p class="text-gray-400 text-sm mb-3">Velvet-smooth with anti-fade tech</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;1,899<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-amber-500 hover:bg-amber-600 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Opus Products -->
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="opus">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?auto=format&fit=crop&w=400&q=80" alt="Diamond" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">Exclusive</div>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-emerald-600">Opus</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Diamond Shield Ultra</h4>
-                        <p class="text-gray-400 text-sm mb-3">Diamond-tough exterior coating</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;3,499<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="opus">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80" alt="Eco" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-lime-500 text-white text-xs font-bold px-3 py-1 rounded-full">Green Choice</div>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-emerald-600">Opus</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Eco Fresh Non-Toxic</h4>
-                        <p class="text-gray-400 text-sm mb-3">100% lead-free, safe for kids & pets</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;2,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dulux Products -->
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="dulux">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=400&q=80" alt="Velvet" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">Imported</div>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-purple-600">Dulux</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Velvet Touch Platinum</h4>
-                        <p class="text-gray-400 text-sm mb-3">International quality, deep colours</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;5,199<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden fade-up" data-brand="dulux">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Promise" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full text-purple-600">Dulux</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-lg font-bold text-gray-900 mb-1">Promise Interior</h4>
-                        <p class="text-gray-400 text-sm mb-3">Budget-friendly washable formula</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xl font-black text-gray-900">&#8377;1,499<span class="text-sm text-gray-400 font-normal">/4L</span></span>
-                            <button class="w-10 h-10 bg-purple-600 hover:bg-purple-700 text-white rounded-xl flex items-center justify-center transition"><i class="fas fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-brand-dark py-12">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <span class="text-2xl font-black tracking-tight text-white">BETU<span class="text-orange-400">PAINT</span></span>
-            <p class="text-gray-500 text-sm mt-3">India's premium painting service. Transforming spaces with elegance.</p>
-            <div class="mt-6 flex justify-center space-x-4">
-                <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+        <!-- NEROLAC -->
+        <div class="brand-group" data-group="nerolac">
+            <div class="brand-group-header">
+                <div class="brand-group-icon" style="background:#fefce8;color:#ca8a04"><i class="fas fa-paint-roller"></i></div>
+                <div class="brand-group-title">
+                    <h2>Nerolac</h2>
+                    <p>Goodlass Nerolac Paints</p>
+                </div>
+                <div class="brand-group-line"></div>
             </div>
-            <div class="mt-8 border-t border-white/10 pt-6 text-sm text-gray-600">
-                &copy; 2026 Betupaint Services Pvt. Ltd. All rights reserved.
+            <div class="products-grid">
+                <div class="product-card" data-brand="nerolac">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80" alt="Impressions 24 Carat">
+                        <span class="badge" style="background:#ca8a04">Top Rated</span>
+                        <span class="brand-tag" style="color:#ca8a04">Nerolac</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Impressions 24 Carat</h4>
+                        <p>Ultra-premium gold-class interior finish</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;4,599 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#ca8a04" onclick="enquireWhatsApp('Impressions 24 Carat', 'Nerolac', '&#8377;4,599/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="nerolac">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=400&q=80" alt="Beauty Smooth Finish">
+                        <span class="brand-tag" style="color:#ca8a04">Nerolac</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Beauty Smooth Finish</h4>
+                        <p>Velvet-smooth with anti-fade technology</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;1,899 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#ca8a04" onclick="enquireWhatsApp('Beauty Smooth Finish', 'Nerolac', '&#8377;1,899/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="nerolac">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e3?auto=format&fit=crop&w=400&q=80" alt="Excel Total">
+                        <span class="brand-tag" style="color:#ca8a04">Nerolac</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Excel Total Exterior</h4>
+                        <p>Complete exterior protection with dirt pick-up resistance</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;2,799 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#ca8a04" onclick="enquireWhatsApp('Excel Total Exterior', 'Nerolac', '&#8377;2,799/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="nerolac">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=400&q=80" alt="Suraksha Primer">
+                        <span class="brand-tag" style="color:#ca8a04">Nerolac</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Suraksha Primer</h4>
+                        <p>Interior primer with anti-fungal properties</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;999 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#ca8a04" onclick="enquireWhatsApp('Suraksha Primer', 'Nerolac', '&#8377;999/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/911234567890" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110">
-        <i class="fab fa-whatsapp text-white text-2xl"></i>
-    </a>
+        <!-- OPUS PAINTS -->
+        <div class="brand-group" data-group="opus">
+            <div class="brand-group-header">
+                <div class="brand-group-icon" style="background:#f0fdf4;color:#16a34a"><i class="fas fa-leaf"></i></div>
+                <div class="brand-group-title">
+                    <h2>Opus Paints</h2>
+                    <p>Colour Experts</p>
+                </div>
+                <div class="brand-group-line"></div>
+            </div>
+            <div class="products-grid">
+                <div class="product-card" data-brand="opus">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?auto=format&fit=crop&w=400&q=80" alt="Diamond Shield Ultra">
+                        <span class="badge" style="background:#16a34a">Exclusive</span>
+                        <span class="brand-tag" style="color:#16a34a">Opus</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Diamond Shield Ultra</h4>
+                        <p>Diamond-tough exterior coating with 8-year warranty</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;3,499 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#16a34a" onclick="enquireWhatsApp('Diamond Shield Ultra', 'Opus Paints', '&#8377;3,499/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="opus">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80" alt="Eco Fresh Non-Toxic">
+                        <span class="badge" style="background:#84cc16">Green Choice</span>
+                        <span class="brand-tag" style="color:#16a34a">Opus</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Eco Fresh Non-Toxic</h4>
+                        <p>100% lead-free, safe for kids & pets</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;2,199 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#16a34a" onclick="enquireWhatsApp('Eco Fresh Non-Toxic', 'Opus Paints', '&#8377;2,199/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="opus">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=400&q=80" alt="Velvet Interior">
+                        <span class="brand-tag" style="color:#16a34a">Opus</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Velvet Interior Matt</h4>
+                        <p>Rich matte finish with superior coverage</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;1,799 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#16a34a" onclick="enquireWhatsApp('Velvet Interior Matt', 'Opus Paints', '&#8377;1,799/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="opus">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80" alt="Sheen Finish">
+                        <span class="brand-tag" style="color:#16a34a">Opus</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Sheen Finish Emulsion</h4>
+                        <p>Low-sheen washable emulsion for living spaces</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;2,599 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#16a34a" onclick="enquireWhatsApp('Sheen Finish Emulsion', 'Opus Paints', '&#8377;2,599/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <script>
-        function filterProducts(brand, btn) {
-            document.querySelectorAll('.filter-btn').forEach(b => {
-                b.classList.remove('active');
-                b.style.background = '';
-                b.style.color = '';
-            });
-            btn.classList.add('active');
+        <!-- DULUX -->
+        <div class="brand-group" data-group="dulux">
+            <div class="brand-group-header">
+                <div class="brand-group-icon" style="background:#faf5ff;color:#9333ea"><i class="fas fa-star"></i></div>
+                <div class="brand-group-title">
+                    <h2>Dulux</h2>
+                    <p>Let's Colour</p>
+                </div>
+                <div class="brand-group-line"></div>
+            </div>
+            <div class="products-grid">
+                <div class="product-card" data-brand="dulux">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=400&q=80" alt="Velvet Touch Platinum">
+                        <span class="badge" style="background:#9333ea">Imported</span>
+                        <span class="brand-tag" style="color:#9333ea">Dulux</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Velvet Touch Platinum</h4>
+                        <p>International quality with deep colour technology</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;5,199 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#9333ea" onclick="enquireWhatsApp('Velvet Touch Platinum', 'Dulux', '&#8377;5,199/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="dulux">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Promise Interior">
+                        <span class="brand-tag" style="color:#9333ea">Dulux</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Promise Interior</h4>
+                        <p>Budget-friendly washable interior formula</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;1,499 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#9333ea" onclick="enquireWhatsApp('Promise Interior', 'Dulux', '&#8377;1,499/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="dulux">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=400&q=80" alt="Weathershield Max">
+                        <span class="brand-tag" style="color:#9333ea">Dulux</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Weathershield Max</h4>
+                        <p>All-weather exterior protection for Indian climate</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;3,799 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#9333ea" onclick="enquireWhatsApp('Weathershield Max', 'Dulux', '&#8377;3,799/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-brand="dulux">
+                    <div class="product-card-img">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&q=80" alt="Superclean">
+                        <span class="brand-tag" style="color:#9333ea">Dulux</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h4>Superclean Washable</h4>
+                        <p>Easy-clean finish — ideal for high-traffic areas</p>
+                        <div class="product-card-footer">
+                            <div class="product-price">&#8377;2,299 <span>/ 4L</span></div>
+                            <button class="enquire-btn" style="background:#9333ea" onclick="enquireWhatsApp('Superclean Washable', 'Dulux', '&#8377;2,299/4L')">
+                                <i class="fab fa-whatsapp"></i> Enquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            document.querySelectorAll('.product-card').forEach(card => {
-                if (brand === 'all' || card.dataset.brand === brand) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
+        <!-- No results message -->
+        <div class="no-results" id="noResults">
+            <i class="fas fa-search"></i>
+            <h3>No products found for this filter.</h3>
+        </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    </script>
+    </div>
+</div>
+
+<!-- ===== CTA ===== -->
+<div class="cta-banner">
+    <div class="container">
+        <h2>Can't Find What<br><em>You're Looking For?</em></h2>
+        <p>Contact us directly — we stock many more products and can source any brand you need.</p>
+        <div class="cta-btns">
+            <a href="https://wa.me/911234567890" target="_blank" class="btn-wa">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+            <a href="tel:+911234567890" class="btn-call">
+                <i class="fas fa-phone"></i> Call Now
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-paint-roller"></i></div>
+                    <div class="logo-text">
+                        <span>BETU<b>PAINT</b></span>
+                        <small>Premium Painting</small>
+                    </div>
+                </a>
+                <p>India's premium painting service. Transforming homes and businesses with quality, safety, and style since 2010.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="index.html#partner">Our Partner</a></li>
+                    <li><a href="index.html#brands">Our Brands</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Brands</h4>
+                <ul>
+                    <li><a href="index.html#brands">Asian Paints</a></li>
+                    <li><a href="index.html#brands">Berger Paints</a></li>
+                    <li><a href="index.html#brands">Nerolac</a></li>
+                    <li><a href="index.html#brands">Opus Paints</a></li>
+                    <li><a href="index.html#brands">Dulux</a></li>
+                    <li><a href="index.html#brands">Indigo Paints</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <div class="footer-contact-items">
+                    <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>45 Colour Street, Connaught Place, New Delhi, India - 110001</span></div>
+                    <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91 98765 43210<br>+91 98765 43211</span></div>
+                    <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>info@betupaint.com</span></div>
+                    <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Mon – Sat: 9 AM – 7 PM<br>Sun: 10 AM – 3 PM</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Betupaint Services Pvt. Ltd. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Refund Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== FLOATING WHATSAPP ===== -->
+<a href="https://wa.me/911234567890" target="_blank" class="float-wa" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    function closeMobileNav() {
+        document.getElementById('mobileNav').classList.remove('open');
+    }
+
+    function filterProducts(brand, btn) {
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const groups = document.querySelectorAll('.brand-group');
+        let anyVisible = false;
+
+        groups.forEach(group => {
+            const groupBrand = group.getAttribute('data-group');
+            if (brand === 'all' || groupBrand === brand) {
+                group.style.display = '';
+                anyVisible = true;
+            } else {
+                group.style.display = 'none';
+            }
+        });
+
+        document.getElementById('noResults').style.display = anyVisible ? 'none' : 'block';
+    }
+
+    function enquireWhatsApp(product, brand, price) {
+        const number = '911234567890';
+        const msg = `*BETUPAINT PRODUCT ENQUIRY*%0A` +
+                    `----------------------------%0A` +
+                    `*Product:* ${product}%0A` +
+                    `*Brand:* ${brand}%0A` +
+                    `*Price:* ${price}%0A` +
+                    `----------------------------%0A` +
+                    `I am interested in this product. Please share more details and availability.`;
+        window.open(`https://wa.me/${number}?text=${msg}`, '_blank');
+    }
+</script>
 </body>
 </html>
