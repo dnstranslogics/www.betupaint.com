@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betupaint | About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { display: ['Playfair Display', 'serif'], sans: ['Inter', 'sans-serif'] },
+                    colors: { brand: { blue: '#1e40af', orange: '#f97316', gold: '#d4a853', dark: '#0f172a' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        .btn-premium { background: linear-gradient(135deg, #f97316, #ea580c); transition: all 0.3s; }
+        .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(249,115,22,0.4); }
+        .fade-up { opacity:0; transform:translateY(40px); transition:all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+        .stat-card { transition: all 0.3s; }
+        .stat-card:hover { transform: translateY(-8px); }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+        .mobile-menu.open { transform: translateX(0); }
+    </style>
+</head>
+<body class="bg-white font-sans text-gray-800 pt-[72px]">
+
+    <!-- Navbar -->
+    <nav class="bg-brand-dark/95 backdrop-blur-xl shadow-2xl fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center">
+                    <i class="fas fa-paint-roller text-white text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-tight text-white">BETU<span class="text-orange-400">PAINT</span></span>
+                    <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-gray-400">Premium Painting</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-6">
+                <a href="index.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Home</a>
+                <a href="index.html#brands" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Brands</a>
+                <a href="index.html#putty" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Putty</a>
+                <a href="index.html#primer" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Primer</a>
+                <a href="products.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Products</a>
+                <a href="index.html#services" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Services</a>
+                <a href="about.html" class="text-orange-400 font-medium text-sm uppercase tracking-wider">About</a>
+                <a href="contact.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Contact</a>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="index.html#quote" class="btn-premium text-white px-7 py-3 rounded-full font-bold text-sm shadow-lg">
+                    <i class="fas fa-calendar-check mr-2"></i>Book Free Consultation
+                </a>
+            </div>
+
+            <button onclick="document.getElementById('mobileMenu').classList.toggle('open')" class="lg:hidden text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-brand-dark/98 backdrop-blur-xl flex flex-col items-center justify-center space-y-6">
+        <button onclick="this.parentElement.classList.remove('open')" class="absolute top-6 right-6 text-white text-3xl"><i class="fas fa-times"></i></button>
+        <a href="index.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Home</a>
+        <a href="index.html#brands" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Brands</a>
+        <a href="index.html#putty" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Putty</a>
+        <a href="index.html#primer" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Primer</a>
+        <a href="products.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Products</a>
+        <a href="index.html#services" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Services</a>
+        <a href="about.html" class="text-2xl text-orange-400 font-semibold">About</a>
+        <a href="contact.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Contact</a>
+        <a href="index.html#quote" class="btn-premium text-white px-8 py-3 rounded-full font-bold mt-4">Book Free Consultation</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-brand-dark via-blue-900 to-brand-blue py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(249,115,22,0.1),transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <span class="inline-block bg-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">Our Story</span>
+            <h1 class="font-display text-4xl md:text-6xl font-black text-white mb-4">About Betupaint</h1>
+            <p class="text-blue-200 text-lg max-w-2xl mx-auto">More than a painting service - we're your partners in creating beautiful living spaces.</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center fade-up">
+                <div>
+                    <span class="inline-block bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6">Who We Are</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-black text-gray-900 mb-6">Transforming India's Homes Since 2015</h2>
+                    <p class="text-gray-500 text-lg leading-relaxed mb-6">
+                        At Betupaint, we believe that every wall tells a story. Founded with a vision to revolutionize the painting industry in India, we've grown from a small team of passionate craftsmen to a nationwide network of certified painting professionals.
+                    </p>
+                    <p class="text-gray-500 leading-relaxed mb-8">
+                        We partner with India's top paint brands - Asian Paints, Berger, Nerolac, Opus, and Dulux - to bring you authorized products at transparent prices. Our mechanized, dust-free processes ensure a flawless finish every time, backed by our 1-year comprehensive service warranty.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center space-x-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-orange-500"></i>
+                            <span>Authorized Brand Partners</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-orange-500"></i>
+                            <span>Trained Professionals</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-orange-500"></i>
+                            <span>Zero Hidden Costs</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-orange-500"></i>
+                            <span>Eco-Friendly Options</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80" alt="About Betupaint" class="rounded-3xl shadow-2xl w-full">
+                    <div class="absolute -bottom-6 -left-6 bg-orange-500 text-white rounded-2xl p-6 shadow-xl">
+                        <div class="text-3xl font-black">15+</div>
+                        <div class="text-sm font-semibold opacity-90">Years of Excellence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 fade-up">
+                <div class="stat-card bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center">
+                        <i class="fas fa-users text-2xl text-orange-500"></i>
+                    </div>
+                    <div class="text-3xl font-black text-gray-900 mb-1">10,000+</div>
+                    <div class="text-sm text-gray-500">Happy Clients</div>
+                </div>
+                <div class="stat-card bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
+                        <i class="fas fa-city text-2xl text-blue-500"></i>
+                    </div>
+                    <div class="text-3xl font-black text-gray-900 mb-1">50+</div>
+                    <div class="text-sm text-gray-500">Cities Covered</div>
+                </div>
+                <div class="stat-card bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 flex items-center justify-center">
+                        <i class="fas fa-hard-hat text-2xl text-emerald-500"></i>
+                    </div>
+                    <div class="text-3xl font-black text-gray-900 mb-1">500+</div>
+                    <div class="text-sm text-gray-500">Expert Painters</div>
+                </div>
+                <div class="stat-card bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center">
+                        <i class="fas fa-star text-2xl text-purple-500"></i>
+                    </div>
+                    <div class="text-3xl font-black text-gray-900 mb-1">4.8/5</div>
+                    <div class="text-sm text-gray-500">Customer Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8 fade-up">
+                <div class="bg-gradient-to-br from-brand-dark to-blue-900 rounded-3xl p-10 text-white">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-500/20 flex items-center justify-center mb-6">
+                        <i class="fas fa-bullseye text-2xl text-orange-400"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Our Mission</h3>
+                    <p class="text-gray-300 leading-relaxed">To make professional painting services accessible, affordable, and hassle-free for every Indian household. We strive to eliminate the stress of home renovation by providing end-to-end solutions with certified quality and transparent pricing.</p>
+                </div>
+                <div class="bg-gradient-to-br from-orange-500 to-amber-500 rounded-3xl p-10 text-white">
+                    <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mb-6">
+                        <i class="fas fa-eye text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Our Vision</h3>
+                    <p class="text-white/90 leading-relaxed">To become India's most trusted home painting brand by 2030. We envision a future where every homeowner can transform their space with confidence, knowing they have the best products, skilled professionals, and reliable service backing them.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-gradient-to-br from-brand-blue to-brand-dark">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-display text-3xl md:text-5xl font-black text-white mb-6">Let's Create Something Beautiful</h2>
+            <p class="text-blue-200 text-lg mb-8">Get in touch for a free consultation and transform your space today.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="index.html#quote" class="btn-premium text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl">Get Free Quote</a>
+                <a href="contact.html" class="bg-white/10 hover:bg-white/20 text-white px-10 py-4 rounded-full font-bold text-lg border border-white/20 transition">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <span class="text-2xl font-black tracking-tight text-white">BETU<span class="text-orange-400">PAINT</span></span>
+            <p class="text-gray-500 text-sm mt-3">India's premium painting service.</p>
+            <div class="mt-6 flex justify-center space-x-4">
+                <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="mt-8 border-t border-white/10 pt-6 text-sm text-gray-600">&copy; 2026 Betupaint Services Pvt. Ltd. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/911234567890" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </a>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

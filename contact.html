@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betupaint | Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { display: ['Playfair Display', 'serif'], sans: ['Inter', 'sans-serif'] },
+                    colors: { brand: { blue: '#1e40af', orange: '#f97316', gold: '#d4a853', dark: '#0f172a' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        .btn-premium { background: linear-gradient(135deg, #f97316, #ea580c); transition: all 0.3s; position: relative; overflow: hidden; }
+        .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(249,115,22,0.4); }
+        .fade-up { opacity:0; transform:translateY(40px); transition:all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+        .contact-card { transition: all 0.3s; }
+        .contact-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+        .mobile-menu.open { transform: translateX(0); }
+    </style>
+</head>
+<body class="bg-white font-sans text-gray-800 pt-[72px]">
+
+    <!-- Navbar -->
+    <nav class="bg-brand-dark/95 backdrop-blur-xl shadow-2xl fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center">
+                    <i class="fas fa-paint-roller text-white text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-tight text-white">BETU<span class="text-orange-400">PAINT</span></span>
+                    <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-gray-400">Premium Painting</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-6">
+                <a href="index.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Home</a>
+                <a href="index.html#brands" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Brands</a>
+                <a href="index.html#putty" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Putty</a>
+                <a href="index.html#primer" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Primer</a>
+                <a href="products.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Products</a>
+                <a href="index.html#services" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">Services</a>
+                <a href="about.html" class="text-white/80 hover:text-orange-400 font-medium transition-colors text-sm uppercase tracking-wider">About</a>
+                <a href="contact.html" class="text-orange-400 font-medium text-sm uppercase tracking-wider">Contact</a>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="index.html#quote" class="btn-premium text-white px-7 py-3 rounded-full font-bold text-sm shadow-lg">
+                    <i class="fas fa-calendar-check mr-2"></i>Book Free Consultation
+                </a>
+            </div>
+
+            <button onclick="document.getElementById('mobileMenu').classList.toggle('open')" class="lg:hidden text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-brand-dark/98 backdrop-blur-xl flex flex-col items-center justify-center space-y-6">
+        <button onclick="this.parentElement.classList.remove('open')" class="absolute top-6 right-6 text-white text-3xl"><i class="fas fa-times"></i></button>
+        <a href="index.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Home</a>
+        <a href="index.html#brands" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Brands</a>
+        <a href="index.html#putty" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Putty</a>
+        <a href="index.html#primer" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Primer</a>
+        <a href="products.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Products</a>
+        <a href="index.html#services" class="text-2xl text-white font-semibold hover:text-orange-400 transition">Services</a>
+        <a href="about.html" class="text-2xl text-white font-semibold hover:text-orange-400 transition">About</a>
+        <a href="contact.html" class="text-2xl text-orange-400 font-semibold">Contact</a>
+        <a href="index.html#quote" class="btn-premium text-white px-8 py-3 rounded-full font-bold mt-4">Book Free Consultation</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-brand-dark via-blue-900 to-brand-blue py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(249,115,22,0.1),transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <span class="inline-block bg-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">Get In Touch</span>
+            <h1 class="font-display text-4xl md:text-6xl font-black text-white mb-4">Contact Us</h1>
+            <p class="text-blue-200 text-lg max-w-2xl mx-auto">We'd love to hear from you. Reach out for a free consultation or any inquiries.</p>
+        </div>
+    </section>
+
+    <!-- Contact Cards -->
+    <section class="py-16 -mt-12 relative z-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-up">
+                <div class="contact-card bg-white rounded-2xl p-8 shadow-xl border border-gray-100 text-center">
+                    <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center">
+                        <i class="fas fa-phone text-2xl text-orange-500"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2">Call Us</h4>
+                    <p class="text-gray-500 text-sm">+91 98765 43210</p>
+                    <p class="text-gray-500 text-sm">+91 12345 67890</p>
+                </div>
+                <div class="contact-card bg-white rounded-2xl p-8 shadow-xl border border-gray-100 text-center">
+                    <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
+                        <i class="fas fa-envelope text-2xl text-blue-500"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2">Email Us</h4>
+                    <p class="text-gray-500 text-sm">info@betupaint.com</p>
+                    <p class="text-gray-500 text-sm">support@betupaint.com</p>
+                </div>
+                <div class="contact-card bg-white rounded-2xl p-8 shadow-xl border border-gray-100 text-center">
+                    <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 flex items-center justify-center">
+                        <i class="fas fa-map-marker-alt text-2xl text-emerald-500"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2">Visit Us</h4>
+                    <p class="text-gray-500 text-sm">45 Color Street,</p>
+                    <p class="text-gray-500 text-sm">New Delhi, India 110001</p>
+                </div>
+                <div class="contact-card bg-white rounded-2xl p-8 shadow-xl border border-gray-100 text-center">
+                    <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center">
+                        <i class="fas fa-clock text-2xl text-purple-500"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2">Working Hours</h4>
+                    <p class="text-gray-500 text-sm">Mon - Sat: 9AM - 7PM</p>
+                    <p class="text-gray-500 text-sm">Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form + Map -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 fade-up">
+                <!-- Form -->
+                <div class="bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
+                    <h2 class="font-display text-3xl font-bold text-gray-900 mb-2">Send Us a Message</h2>
+                    <p class="text-gray-500 mb-8">Fill in the form below and we'll get back to you within 24 hours.</p>
+                    <form class="space-y-5" id="contactForm">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div class="relative">
+                                <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                <input type="text" id="cName" placeholder="Full Name" class="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition" required>
+                            </div>
+                            <div class="relative">
+                                <i class="fas fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                <input type="tel" id="cMobile" placeholder="Mobile Number" class="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition" required>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input type="email" id="cEmail" placeholder="Email Address" class="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition">
+                        </div>
+                        <div class="relative">
+                            <i class="fas fa-paint-roller absolute left-4 top-4 text-gray-400"></i>
+                            <select id="cService" class="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition appearance-none text-gray-500">
+                                <option value="">Select Service</option>
+                                <option value="Interior Painting">Interior Painting</option>
+                                <option value="Exterior Painting">Exterior Painting</option>
+                                <option value="Texture & Designer">Texture & Designer Walls</option>
+                                <option value="Waterproofing">Waterproofing</option>
+                                <option value="Wood & Metal">Wood & Metal Painting</option>
+                                <option value="Color Consultation">Color Consultation</option>
+                            </select>
+                        </div>
+                        <div class="relative">
+                            <i class="fas fa-comment absolute left-4 top-4 text-gray-400"></i>
+                            <textarea id="cMessage" placeholder="Tell us about your project..." rows="4" class="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition resize-none"></textarea>
+                        </div>
+                        <button type="button" onclick="sendWhatsApp()" class="w-full btn-premium text-white font-bold py-4 rounded-2xl shadow-xl flex items-center justify-center space-x-3 text-lg">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                            <span>Send via WhatsApp</span>
+                        </button>
+                        <p class="text-center text-gray-400 text-xs"><i class="fas fa-lock mr-1"></i>Your information is secure and never shared.</p>
+                    </form>
+                </div>
+
+                <!-- Info Side -->
+                <div class="flex flex-col justify-center">
+                    <div class="bg-gradient-to-br from-brand-dark to-blue-900 rounded-3xl p-10 text-white mb-8">
+                        <h3 class="font-display text-2xl font-bold mb-6">Why Choose Betupaint?</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fas fa-check text-orange-400 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Free Site Inspection</p>
+                                    <p class="text-gray-400 text-sm">Our expert visits your home within 24 hours of booking.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fas fa-check text-blue-400 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Transparent Pricing</p>
+                                    <p class="text-gray-400 text-sm">No hidden charges. Detailed quotation with brand-wise breakup.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fas fa-check text-green-400 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">1 Year Warranty</p>
+                                    <p class="text-gray-400 text-sm">Comprehensive warranty on all painting services.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fas fa-check text-purple-400 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Post-Service Cleanup</p>
+                                    <p class="text-gray-400 text-sm">Professional cleanup after project completion.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl p-8 text-white text-center">
+                        <i class="fab fa-whatsapp text-4xl mb-3"></i>
+                        <h4 class="text-xl font-bold mb-2">Quick Response on WhatsApp</h4>
+                        <p class="text-white/80 text-sm mb-4">Get instant replies and project updates on WhatsApp.</p>
+                        <a href="https://wa.me/911234567890" class="inline-block bg-white text-orange-500 px-8 py-3 rounded-full font-bold hover:shadow-lg transition">Chat Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <span class="text-2xl font-black tracking-tight text-white">BETU<span class="text-orange-400">PAINT</span></span>
+            <p class="text-gray-500 text-sm mt-3">India's premium painting service.</p>
+            <div class="mt-6 flex justify-center space-x-4">
+                <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-orange-500 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="mt-8 border-t border-white/10 pt-6 text-sm text-gray-600">&copy; 2026 Betupaint Services Pvt. Ltd. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/911234567890" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </a>
+
+    <script>
+        function sendWhatsApp() {
+            const name = document.getElementById('cName').value;
+            const mobile = document.getElementById('cMobile').value;
+            const email = document.getElementById('cEmail').value;
+            const service = document.getElementById('cService').value;
+            const message = document.getElementById('cMessage').value;
+
+            if (!name || !mobile) {
+                alert("Please enter your name and mobile number!");
+                return;
+            }
+
+            const myNum = "911234567890";
+            const msg = `*BETUPAINT CONTACT INQUIRY*%0A` +
+                        `--------------------------%0A` +
+                        `*Name:* ${name}%0A` +
+                        `*Mobile:* ${mobile}%0A` +
+                        `*Email:* ${email || 'Not provided'}%0A` +
+                        `*Service:* ${service || 'General Inquiry'}%0A` +
+                        `*Message:* ${message || 'N/A'}%0A` +
+                        `--------------------------%0A` +
+                        `Please contact me regarding the above.`;
+
+            window.open(`https://wa.me/${myNum}?text=${msg}`, '_blank');
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
